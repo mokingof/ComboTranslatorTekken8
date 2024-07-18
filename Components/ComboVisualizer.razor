@@ -1,1 +1,62 @@
-﻿
+﻿@using ComboTranslatorTekken8.Model
+@using Microsoft.AspNetCore.Components.Web
+@inject CommandImageMapping ImageMapping
+@namespace ComboTranslatorTekken8.Pages
+
+<div class="input-area">
+    <input @bind-value="InputText" @bind-value:event="oninput" @onkeydown="HandleKeyDown" />
+</div>
+
+<div class="visual-area">
+    @foreach (var imagePath in VisualRepresentation)
+    {
+        <img src="@imagePath" alt="Command" />
+    }
+</div>
+
+@code {
+    private string InputText { get; set; } = "";
+    private List<string> VisualRepresentation { get; set; } = new List<string>();
+
+    private void HandleKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Backspace")
+        {
+            RemoveLastVisual();
+        }
+        else
+        {
+            AddVisual(e.Key);
+        }
+    }
+
+    private void AddVisual(string key)
+    {
+        if (TryParseInput(key, out InputCommand command))
+        {
+            if (ImageMapping.TryGetImagePath(command, out string imagePath))
+            {
+                VisualRepresentation.Add(imagePath);
+                StateHasChanged();
+            }
+        }
+    }
+
+    private void RemoveLastVisual()
+    {
+        if (VisualRepresentation.Any())
+        {
+            VisualRepresentation.RemoveAt(VisualRepresentation.Count - 1);
+            StateHasChanged();
+        }
+    }
+
+    private bool TryParseInput(string key, out InputCommand command)
+    {
+        // Implement logic to convert key press to InputCommand
+        // This might involve a mapping from keys to commands
+        // For now, let's assume a simple mapping exists
+        command = InputCommand.Down; // placeholder
+        return true; // placeholder
+    }
+}

@@ -7,12 +7,11 @@ namespace ComboTranslatorTekken8.Model
         private readonly Dictionary<InputCommand, string> commandImages;
         private readonly IWebHostEnvironment webHostEnvironment;
 
-        public CommandImageMapping()
+        public CommandImageMapping(IWebHostEnvironment webHostEnvironment)
         {
-            this.webHostEnvironment = webHostEnvironment;
+            this.webHostEnvironment = webHostEnvironment ?? throw new ArgumentNullException(nameof(webHostEnvironment));
             commandImages = new Dictionary<InputCommand, string>();
             InitializeCommandImages();
-
         }
 
         private void InitializeCommandImages()
