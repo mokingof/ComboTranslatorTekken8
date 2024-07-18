@@ -1,3 +1,5 @@
+using ComboTranslatorTekken8.Model;
+
 namespace ComboTranslatorTekken8
 {
     public class Program
@@ -8,6 +10,7 @@ namespace ComboTranslatorTekken8
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddSingleton<CommandImageMapping>();
 
             var app = builder.Build();
 

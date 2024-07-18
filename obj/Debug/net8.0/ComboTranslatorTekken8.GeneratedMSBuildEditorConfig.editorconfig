@@ -18,6 +18,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\abdill\source\repos\ComboTranslatorTekken8\ComboTranslatorTekken8
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/abdill/source/repos/ComboTranslatorTekken8/ComboTranslatorTekken8/Components/ComboVisualizer.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDb21ib1Zpc3VhbGl6ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/abdill/source/repos/ComboTranslatorTekken8/ComboTranslatorTekken8/Pages/ComboDisplay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tYm9EaXNwbGF5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/abdill/source/repos/ComboTranslatorTekken8/ComboTranslatorTekken8/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
