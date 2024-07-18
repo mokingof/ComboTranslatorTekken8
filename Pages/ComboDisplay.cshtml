@@ -1,0 +1,36 @@
+﻿@page
+@model ComboTranslatorTekken8.Pages.ComboDisplayModel
+@{
+}
+
+<div class="combo-display-container">
+    <input type="text" id="comboInput" placeholder="Enter your Tekken 8 combo here" />
+    <div id="comboVisual"></div>
+</div>
+
+<script>
+    document.getElementById('comboInput').addEventListener('input', function (e) {
+        let input = e.target.value;
+        let visualDiv = document.getElementById('comboVisual');
+
+        if (input.trim() === '') {
+            visualDiv.innerHTML = ''; // Clear the visual area if input is empty
+            return; // Exit the function early
+        }
+
+        fetch('/ComboDisplay?handler=ParseCombo&combo=' + encodeURIComponent(input))
+            .then(response => response.json())
+            .then(data => {
+                visualDiv.innerHTML = '';
+                if (Array.isArray(data) && data.length > 0) {
+                    data.forEach(imagePath => {
+                        let img = document.createElement('img');
+                        img.src = imagePath;
+                        img.alt = 'Combo move';
+                        visualDiv.appendChild(img);
+                    });
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>

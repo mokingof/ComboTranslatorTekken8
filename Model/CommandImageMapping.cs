@@ -24,7 +24,7 @@ namespace ComboTranslatorTekken8.Model
             commandImages.Add(InputCommand.Up, "Images/Arrows/Up.png");
             commandImages.Add(InputCommand.Down, "Images/Arrows/Down.png");
             commandImages.Add(InputCommand.Back, "Images/Arrows/Back.png");
-            commandImages.Add(InputCommand.Forward, "Images/Arrows/Ford.png");
+            commandImages.Add(InputCommand.Forward, "Images/Arrows/Forward.png");
          
         }
 
@@ -38,15 +38,15 @@ namespace ComboTranslatorTekken8.Model
             throw new KeyNotFoundException($"No image mapping found for command: {command}");
         }
 
-        public bool TryGetImagePath(InputCommand command, out string fullPath)
+        public bool TryGetImagePath(InputCommand command, out string imagePath)
         {
             if (commandImages.TryGetValue(command, out string relativePath))
             {
-                fullPath = Path.Combine(webHostEnvironment.WebRootPath, relativePath);
+                // Convert the relative path to a web-accessible path
+                imagePath = $"/Images/Arrows/{Path.GetFileName(relativePath)}";
                 return true;
             }
-
-            fullPath = null;
+            imagePath = null;
             return false;
         }
     }

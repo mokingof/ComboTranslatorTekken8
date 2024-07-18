@@ -14,9 +14,8 @@ namespace ComboTranslatorTekken8
             builder.Services.AddServerSideBlazor();
 
             var app = builder.Build();
-            app.MapRazorPages();
-            app.MapBlazorHub();
-            app.MapFallbackToPage("/_Host");
+       
+
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
