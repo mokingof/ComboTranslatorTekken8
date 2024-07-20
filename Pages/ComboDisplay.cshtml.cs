@@ -38,8 +38,8 @@ namespace ComboTranslatorTekken8.Pages
 
             switch (key)
             {
-                case "1":
-                    command = InputCommand.One;
+                case "d":
+                    command = InputCommand.DownForward;
                     return true;
                 case "u":
                     command = InputCommand.Up;
