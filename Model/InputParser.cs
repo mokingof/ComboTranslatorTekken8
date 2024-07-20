@@ -38,13 +38,14 @@ namespace ComboTranslatorTekken8.Model
         {
             var result = new List<Input>();
             //Split input string into tokens via spaces
+            char[] delimiters = { ',', ' ' };
             var tokens = inputString.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (var token in tokens)
             {
                 if (inputMap.TryGetValue(token, out var command))
                 {
-                    result.Add(new Input(command, token));
+                    result.Add(new Input(command));
                 }
                 else
                 {

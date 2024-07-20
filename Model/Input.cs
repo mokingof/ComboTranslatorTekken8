@@ -75,17 +75,13 @@
     public class Input
     {
         public InputCommand Command { get; set; }
-
-        // Optional: If you need to store additional information about the input
-        public string RawInputString { get; set; }
-        public Input(InputCommand command, string rawInputString = null)
+        public Input(InputCommand command)
         {
-            Command = command;
-            RawInputString = rawInputString;
+            Command = command;  
         }
         public override string ToString()
         {
-            return $"Command: {Command}, Raw Input: {RawInputString ?? "N/A"}";
+            return $"Command: {Command}";
         }
     }
 }
