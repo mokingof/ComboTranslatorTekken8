@@ -13,25 +13,45 @@ namespace ComboTranslatorTekken8.Model
             commandImages = new Dictionary<InputCommand, string>();
             InitializeCommandImages();
         }
+        public string GetImagePath(InputCommand command)
+        {
+            if (commandImages.TryGetValue(command, out string relativePath))
+            {
+                return Path.Combine(webHostEnvironment.WebRootPath, relativePath);
+            }
+
+            throw new KeyNotFoundException($"No image mapping found for command: {command}");
+        }
+        public bool TryGetImagePath(InputCommand command, out string imagePath)
+        {
+            if (commandImages.TryGetValue(command, out string relativePath))
+            {
+                // Convert the relative path to a web-accessible path
+                imagePath = $"/Images/AllImages/{Path.GetFileName(relativePath)}";
+                return true;
+            }
+            imagePath = null;
+            return false;
+        }
 
         private void InitializeCommandImages()
         {
             //Button mapping
             commandImages.Add(InputCommand.One, "Images/Buttons/One.png");
-            commandImages.Add(InputCommand.OneTwo, "Images/Buttons/12.png");
-            commandImages.Add(InputCommand.OneTwoThree, "Images/Buttons/123.png");
-            commandImages.Add(InputCommand.OneTwoThreeFour, "Images/Buttons/1234.png");
-            commandImages.Add(InputCommand.OneTwoFour, "Images/Buttons/124.png");
-            commandImages.Add(InputCommand.OneThree, "Images/Buttons/13.png");
-            commandImages.Add(InputCommand.OneThreeFour, "Images/Buttons/134.png");
-            commandImages.Add(InputCommand.OneFour, "Images/Buttons/14.png");
-            commandImages.Add(InputCommand.Two, "Images/Buttons/2.png");
-            commandImages.Add(InputCommand.TwoThree, "Images/Buttons/23.png");
-            commandImages.Add(InputCommand.TwoThreeFour, "Images/Buttons/234.png");
-            commandImages.Add(InputCommand.TwoFour, "Images/Buttons/24.png");
-            commandImages.Add(InputCommand.Three, "Images/Buttons/3.png");        
-            commandImages.Add(InputCommand.ThreeFour, "Images/Buttons/34.png");
-            commandImages.Add(InputCommand.Four, "Images/Buttons/4.png");
+            commandImages.Add(InputCommand.OneTwo, "Images/Buttons/OneTwo.png");
+            commandImages.Add(InputCommand.OneTwoThree, "Images/Buttons/OneTwoThree.png");
+            commandImages.Add(InputCommand.OneTwoThreeFour, "Images/Buttons/OneTwoThreeFour.png");
+            commandImages.Add(InputCommand.OneTwoFour, "Images/Buttons/OneTwoFour.png");
+            commandImages.Add(InputCommand.OneThree, "Images/Buttons/OneThree.png");
+            commandImages.Add(InputCommand.OneThreeFour, "Images/Buttons/OneThreeFour.png");
+            commandImages.Add(InputCommand.OneFour, "Images/Buttons/OneFour.png");
+            commandImages.Add(InputCommand.Two, "Images/Buttons/Two.png");
+            commandImages.Add(InputCommand.TwoThree, "Images/Buttons/TwoThree.png");
+            commandImages.Add(InputCommand.TwoThreeFour, "Images/Buttons/TwoThreeFour.png");
+            commandImages.Add(InputCommand.TwoFour, "Images/Buttons/TwoFour.png");
+            commandImages.Add(InputCommand.Three, "Images/Buttons/Three.png");
+            commandImages.Add(InputCommand.ThreeFour, "Images/Buttons/ThreeFour.png");
+            commandImages.Add(InputCommand.Four, "Images/Buttons/Four.png");
             // Direction mapping
             commandImages.Add(InputCommand.Up, "Images/Arrows/Up.png");
             commandImages.Add(InputCommand.UpBack, "Images/Arrows/UpBack.png");
@@ -55,7 +75,7 @@ namespace ComboTranslatorTekken8.Model
             commandImages.Add(InputCommand.CrouchCancel, "Images/Miscellaneous/CrouchCancel.png");
             commandImages.Add(InputCommand.Dash, "Images/Miscellaneous/Dash.png");
             commandImages.Add(InputCommand.FullCrouch, "Images/Miscellaneous/FullCrouch.png");
-           // commandImages.Add(InputCommand.Heat, "Images/Miscellaneous/Heat.png");
+            // commandImages.Add(InputCommand.Heat, "Images/Miscellaneous/Heat.png");
             commandImages.Add(InputCommand.HeatBurst, "Images/Miscellaneous/HeatBurtst.png");
             commandImages.Add(InputCommand.HeatSmash, "Images/Miscellaneous/HeatSmash.png");
             commandImages.Add(InputCommand.JustFrame, "Images/Miscellaneous/JustFrame.png");
@@ -76,28 +96,6 @@ namespace ComboTranslatorTekken8.Model
             commandImages.Add(InputCommand.WallBlast, "Images/StageInteractions/WallBlast.png");
             commandImages.Add(InputCommand.WallBound, "Images/StageInteractions/WallBound.png");
             commandImages.Add(InputCommand.WallBreak, "Images/StageInteractions/WallBreak.png");
-        }
-
-        public string GetImagePath(InputCommand command)
-        {
-            if (commandImages.TryGetValue(command, out string relativePath))
-            {
-                return Path.Combine(webHostEnvironment.WebRootPath, relativePath);
-            }
-
-            throw new KeyNotFoundException($"No image mapping found for command: {command}");
-        }
-
-        public bool TryGetImagePath(InputCommand command, out string imagePath)
-        {
-            if (commandImages.TryGetValue(command, out string relativePath))
-            {
-                // Convert the relative path to a web-accessible path
-                imagePath = $"/Images/Arrows/{Path.GetFileName(relativePath)}";
-                return true;
-            }
-            imagePath = null;
-            return false;
         }
     }
 }
