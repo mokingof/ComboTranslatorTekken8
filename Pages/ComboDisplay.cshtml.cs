@@ -36,10 +36,10 @@ namespace ComboTranslatorTekken8.Pages
 
 
 
-            switch (key.ToLower())
+            switch (key)
             {
-                case "d":
-                    command = InputCommand.Down;
+                case "1":
+                    command = InputCommand.One;
                     return true;
                 case "u":
                     command = InputCommand.Up;
