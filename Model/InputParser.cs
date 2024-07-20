@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using Microsoft.AspNetCore.DataProtection.KeyManagement;
+using System.Reflection;
 
 namespace ComboTranslatorTekken8.Model
 {
@@ -8,7 +9,7 @@ namespace ComboTranslatorTekken8.Model
 
         public InputParser()
         {                                                               //CASE INSENSITIVE
-            inputMap = new Dictionary<string, InputCommand>(StringComparer.OrdinalIgnoreCase);
+            inputMap = new Dictionary<string, InputCommand>(StringComparer.Ordinal);
             InitializeInputMap();
         }
 

@@ -8,16 +8,18 @@ namespace ComboTranslatorTekken8.Pages
     public class ComboDisplayModel : PageModel
     {
         private readonly CommandImageMapping _imageMapping;
+        private readonly InputParser _inputParser;  
 
-        public ComboDisplayModel(CommandImageMapping imageMapping)
+        public ComboDisplayModel(CommandImageMapping imageMapping, InputParser inputParser)
         {
             _imageMapping = imageMapping;
+            _inputParser = inputParser; 
         }
 
         public IActionResult OnGetParseCombo(string combo)
         {
             var imagePaths = new List<string>();
-            
+
             if (!string.IsNullOrEmpty(combo))
             {
                 foreach (char c in combo)
