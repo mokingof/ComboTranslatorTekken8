@@ -43,8 +43,9 @@ namespace ComboTranslatorTekken8.Model
 
             foreach (var token in tokens)
             {
-                if (inputMap.TryGetValue(token, out var command))
+                if (inputMap.ContainsKey(token))
                 {
+                    var command = inputMap[token];
                     result.Add(new Input(command));
                 }
                 else
