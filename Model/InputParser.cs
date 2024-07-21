@@ -5,56 +5,32 @@ namespace ComboTranslatorTekken8.Model
 {
     public class InputParser
     {
-        private readonly Dictionary<string, InputCommand> inputMap;
-
-        public InputParser()
-        {                                                               //CASE INSENSITIVE
-            inputMap = new Dictionary<string, InputCommand>(StringComparer.Ordinal);
-            InitializeInputMap();
+       
+        public InputCommand? ParseInput(string inputString)
+        {
+            return null;
         }
 
-        private void InitializeInputMap()
+        public InputCommand? ParseSingleInput(string notation)
         {
-            var type = typeof(InputCommand);
-            var values = Enum.GetValues(type);
-
-            foreach (InputCommand value in values)
-            {   
-
-                var memberInfo = type.GetMember(value.ToString()).FirstOrDefault();
-                var attributes = memberInfo?.GetCustomAttributes<InputStringAttribute>(false);
-
-                if (attributes != null)
-                {
-                    foreach (var attribute in attributes)
-                    {   
-                        // Using reflection to populate the inputMap
-                        inputMap[attribute.InputString] = value;
-                    }
-                }
-            }
-        }
-        public List<Input> ParseInput(string inputString)
-        {
-            var result = new List<Input>();
-
-            char[] delimiters = { ',', ' ' };
-            var tokens = inputString.Split(delimiters).ToList();
-
-            foreach (var token in tokens)
+            return notation switch
             {
-                if (inputMap.ContainsKey(token))
-                {
-                    var command = inputMap[token];
-                    result.Add(new Input(command));
-                }
-                else
-                {
-                    throw new ArgumentException($"Invalid input: {token}");
-                }
-            }
-
-            return result;
+                "1" => InputCommand.One,
+                "2" => InputCommand.Two,
+                "3" => InputCommand.Three,
+                "4" => InputCommand.Four,
+                "n" or "N" => InputCommand.Neutral,
+                "f" => InputCommand.Forward,
+                "b" => InputCommand.Back,
+                "u" => InputCommand.Up,
+                "d" => InputCommand.Down,
+                "F" => InputCommand.HoldForward,
+                "B" => InputCommand.HoldBack,
+                "U" => InputCommand.HoldUp,
+                "D" => InputCommand.HoldDown,
+                _ => null
+            };
         }
+
     }
 }

@@ -24,7 +24,8 @@ namespace ComboTranslatorTekken8.Pages
             {
                 foreach (char c in combo)
                 {
-                    var command = ParseInput(c.ToString());
+                   
+                    var command = _inputParser.ParseSingleInput(c.ToString());
                     if (command != null)
                     {
                         var imagePath = _imageMapping.GetWebAccessibleImagePath(command.Value);
@@ -38,20 +39,5 @@ namespace ComboTranslatorTekken8.Pages
             return new JsonResult(imagePaths);
         }
 
-        private InputCommand? ParseInput(string key)
-        {
-            switch (key)
-            {
-                case "1": return InputCommand.One;
-                case "2": return InputCommand.Two;
-                case "3": return InputCommand.Three;
-                case "4": return InputCommand.Four;
-                case "b": return InputCommand.Back;
-                case "d": return InputCommand.Down;
-                case "f": return InputCommand.Forward;
-                case "u": return InputCommand.Up;
-                default: return null;
-            }
-        }
     }
 }
