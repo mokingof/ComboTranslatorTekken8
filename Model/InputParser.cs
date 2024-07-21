@@ -37,9 +37,9 @@ namespace ComboTranslatorTekken8.Model
         public List<Input> ParseInput(string inputString)
         {
             var result = new List<Input>();
-            //Split input string into tokens via spaces
+
             char[] delimiters = { ',', ' ' };
-            var tokens = inputString.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var tokens = inputString.Split(delimiters).ToList();
 
             foreach (var token in tokens)
             {

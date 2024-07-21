@@ -15,23 +15,24 @@ namespace ComboTranslatorTekken8.Model
         }
         public string GetImagePath(InputCommand command)
         {
-            if (commandImages.TryGetValue(command, out string relativePath))
+
+            if (commandImages.ContainsKey(command))
             {
+                string relativePath = commandImages[command];
                 return Path.Combine(webHostEnvironment.WebRootPath, relativePath);
             }
 
             throw new KeyNotFoundException($"No image mapping found for command: {command}");
         }
-        public bool TryGetImagePath(InputCommand command, out string imagePath)
+
+        public string GetWebAccessibleImagePath(InputCommand command)
         {
-            if (commandImages.TryGetValue(command, out string relativePath))
+            if (commandImages.ContainsKey(command))
             {
-                // Convert the relative path to a web-accessible path
-                imagePath = $"/Images/AllImages/{Path.GetFileName(relativePath)}";
-                return true;
+                string relativePath = commandImages[command];
+                return $"/Images/AllImages/{Path.GetFileName(relativePath)}";
             }
-            imagePath = null;
-            return false;
+            return null;
         }
 
         private void InitializeCommandImages()

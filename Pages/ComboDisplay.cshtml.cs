@@ -8,12 +8,12 @@ namespace ComboTranslatorTekken8.Pages
     public class ComboDisplayModel : PageModel
     {
         private readonly CommandImageMapping _imageMapping;
-        private readonly InputParser _inputParser;  
+        private readonly InputParser _inputParser = new();  
 
-        public ComboDisplayModel(CommandImageMapping imageMapping, InputParser inputParser)
+        public ComboDisplayModel(CommandImageMapping imageMapping)
         {
             _imageMapping = imageMapping;
-            _inputParser = inputParser; 
+          
         }
 
         public IActionResult OnGetParseCombo(string combo)
@@ -24,62 +24,33 @@ namespace ComboTranslatorTekken8.Pages
             {
                 foreach (char c in combo)
                 {
-                    if (TryParseInput(c.ToString(), out InputCommand command) &&
-                        _imageMapping.TryGetImagePath(command, out string imagePath))
+                    var command = ParseInput(c.ToString());
+                    if (command != null)
                     {
-                        imagePaths.Add(imagePath);
+                        var imagePath = _imageMapping.GetWebAccessibleImagePath(command.Value);
+                        if (imagePath != null)
+                        {
+                            imagePaths.Add(imagePath);
+                        }
                     }
                 }
             }
             return new JsonResult(imagePaths);
         }
 
-        private bool TryParseInput(string key, out InputCommand command)
+        private InputCommand? ParseInput(string key)
         {
             switch (key)
             {
-                case "1":
-                    command = InputCommand.One;
-                    return true;          
-                case "2":
-                    command = InputCommand.Two;
-                    return true;          
-                case "3":
-                    command = InputCommand.Three;
-                    return true;
-                case "4":
-                    command = InputCommand.Four;
-                    return true;
-                case "b":
-                    command = InputCommand.Back;
-                    return true;
-                case "d":
-                    command = InputCommand.Down;
-                    return true;
-                case "f":
-                    command = InputCommand.Forward;
-                    return true;
-                case "u":
-                    command = InputCommand.Up;
-                    return true;
-                case "B":
-                    command = InputCommand.HoldBack;
-                    return true;
-                case "D":
-                    command = InputCommand.HoldDown;
-                    return true;
-                case "F":
-                    command = InputCommand.HoldForward;
-                    return true;
-                case "U":
-                    command = InputCommand.HoldUp;
-                    return true;
-                case "n":
-                    command = InputCommand.Neutral;
-                    return true;
-                default:
-                    command = InputCommand.Down; // Default value
-                    return false;
+                case "1": return InputCommand.One;
+                case "2": return InputCommand.Two;
+                case "3": return InputCommand.Three;
+                case "4": return InputCommand.Four;
+                case "b": return InputCommand.Back;
+                case "d": return InputCommand.Down;
+                case "f": return InputCommand.Forward;
+                case "u": return InputCommand.Up;
+                default: return null;
             }
         }
     }
