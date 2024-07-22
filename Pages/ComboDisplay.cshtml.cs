@@ -15,26 +15,26 @@ namespace ComboTranslatorTekken8.Pages
             _imageMapping = imageMapping;
           
         }
-
         public IActionResult OnGetParseCombo(string combo)
         {
             var imagePaths = new List<string>();
 
+
+              char[] delimiters = { ',', ' ' };
+               List<string>? tokens = combo.Split(delimiters).ToList();
+
             if (!string.IsNullOrEmpty(combo))
             {
-                foreach (char c in combo)
+                var command = _inputParser.ParseInput(tokens);
+                if (command != null)
                 {
-                   
-                    var command = _inputParser.ParseSingleInput(c.ToString());
-                    if (command != null)
+                    var imagePath = _imageMapping.GetWebAccessibleImagePath(command.Value);
+                    if (imagePath != null)
                     {
-                        var imagePath = _imageMapping.GetWebAccessibleImagePath(command.Value);
-                        if (imagePath != null)
-                        {
-                            imagePaths.Add(imagePath);
-                        }
+                        imagePaths.Add(imagePath);
                     }
                 }
+
             }
             return new JsonResult(imagePaths);
         }

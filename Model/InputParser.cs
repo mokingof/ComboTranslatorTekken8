@@ -5,13 +5,14 @@ namespace ComboTranslatorTekken8.Model
 {
     public class InputParser
     {
-       
-        public InputCommand? ParseInput(string inputString)
+
+        public InputCommand? ParseInput(List<string> inputString)
         {
-            return null;
+
+           return ParseMultiDirections(inputString[0]);
         }
 
-        public InputCommand? ParseSingleInput(string notation)
+        private InputCommand? ParseSingleButton(string notation)
         {
             return notation switch
             {
@@ -19,6 +20,14 @@ namespace ComboTranslatorTekken8.Model
                 "2" => InputCommand.Two,
                 "3" => InputCommand.Three,
                 "4" => InputCommand.Four,
+                _ => null
+            };
+        }
+
+        private InputCommand? ParseSingleDirection(string notation)
+        {
+            return notation switch
+            {
                 "n" or "N" => InputCommand.Neutral,
                 "f" => InputCommand.Forward,
                 "b" => InputCommand.Back,
@@ -28,6 +37,89 @@ namespace ComboTranslatorTekken8.Model
                 "B" => InputCommand.HoldBack,
                 "U" => InputCommand.HoldUp,
                 "D" => InputCommand.HoldDown,
+                _ => null
+            };
+        }
+
+        private InputCommand? ParseMultiButtons(string notation)
+        {
+            string sortedButtons = string.Concat(notation.Replace("+", "").OrderBy(c => c));
+
+            return sortedButtons switch
+            {
+                "12" => InputCommand.OneTwo,
+                "13" => InputCommand.OneThree,
+                "14" => InputCommand.OneFour,
+                "23" => InputCommand.TwoThree,
+                "24" => InputCommand.TwoFour,
+                "34" => InputCommand.ThreeFour,
+                "123" => InputCommand.OneTwoThree,
+                "124" => InputCommand.OneTwoFour,
+                "134" => InputCommand.OneThreeFour,
+                "234" => InputCommand.TwoThreeFour,
+                "1234" => InputCommand.OneTwoThreeFour,
+                _ => null
+            };
+        }
+
+        private InputCommand? ParseMultiDirections(string notation)
+        {
+            return notation switch
+            {
+                "uf" or "u/f" => InputCommand.UpForward,
+                "ub" or "u/b" => InputCommand.UpBack,
+                "df" or "d/f" => InputCommand.DownForward,
+                "db" or "d/b" => InputCommand.DownBack,
+                "UF" => InputCommand.HoldUpForward,
+                "UB" => InputCommand.HoldUpBack,
+                "DF" => InputCommand.HoldDownForward,
+                "DB" => InputCommand.HoldDownBack,
+                "qcf" or "QCF" => InputCommand.QuarterCircleForward,
+                "qcb" or "QCB" => InputCommand.QuarterCircleBack,
+                "hcf" or "HCF" => InputCommand.HalfCircleForward,
+                "hcb" or "HCB" => InputCommand.HalfCircleBack,
+                //"ss" or "SS" => InputCommand.SideStep,
+                "ssl" or "SSL" => InputCommand.SideStepLeft,
+                "ssr" or "SSR" => InputCommand.SideStepRight,
+                "swl" or "SWL" => InputCommand.SideWalkLeft,
+                "swr" or "SWR" => InputCommand.SideWalkRight,
+                "ssc" or "SSC" => InputCommand.SideStepCrouch,
+                _ => null
+            };
+        }
+
+        private InputCommand? ParseStageGimmicks(string notation)
+        {
+            return notation.ToLower() switch
+            {
+                "bb!" => InputCommand.BalconyBreak,
+                "fbi!" => InputCommand.FloorBlast,
+                "fb!" => InputCommand.FloorBreak,
+                "w!" => InputCommand.WallBlast,
+                "wbo!" => InputCommand.WallBound,
+                "wb!" => InputCommand.WallBreak,
+                _ => null
+            };
+        }
+
+        private InputCommand? ParseMisc(string notation)
+        {
+            return notation.ToLower() switch
+            {
+                "hs!" => InputCommand.HeatSmash,
+                "hd!" => InputCommand.HeadDash,
+                "hb!" => InputCommand.HeatBurst,
+                "t!" => InputCommand.Tornado,
+                ":" => InputCommand.JustFrame,
+                "cc" => InputCommand.CrouchCancel,
+                "fc" => InputCommand.FullCrouch,
+                "ch" => InputCommand.CounterHit,
+                "dash" => InputCommand.Dash,
+                "microdash" or "mc" => InputCommand.MicroDash,
+                "wr" => InputCommand.WhileRunning,
+                "ws" => InputCommand.WhileStanding,
+                "~" => InputCommand.Tilde,
+                //"," => InputCommand.Seperator,
                 _ => null
             };
         }
