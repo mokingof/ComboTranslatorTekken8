@@ -6,12 +6,30 @@ namespace ComboTranslatorTekken8.Model
     public class InputParser
     {
 
-        public InputCommand? ParseInput(List<string> inputString)
+        public List<InputCommand?> ParseInput(string inputString)
+        {
+            char[] delimiters = { ',', ' ' };
+            List<string> tokens = inputString.Split(delimiters).ToList();
+
+            List<InputCommand?> storeParsedCommands = new();
+
+            for (int i = 0; i < tokens.Count; i++)
+            {
+                storeParsedCommands.Add(FindMatches(tokens[i]));
+              
+            }
+
+            return storeParsedCommands;
+        }
+        private InputCommand? FindMatches(string inputString)
         {
 
-           return ParseMultiDirections(inputString[0]);
+            return ParseMultiButtons(inputString)
+                ?? ParseMultiDirections(inputString)
+                ?? ParseSingleButton(inputString) 
+                ?? ParseSingleDirection(inputString) 
+                ?? ParseStageGimmicks(inputString);
         }
-
         private InputCommand? ParseSingleButton(string notation)
         {
             return notation switch

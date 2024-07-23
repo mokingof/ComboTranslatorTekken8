@@ -25,28 +25,46 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
+    width: 100%;
+    margin-top: 400px; /* Adjust this value to move the search bar down as needed */
 }
 
 #comboInput {
-    width: 80%;
-    max-width: 600px;
+    width: 100%; /* Adjust this value to make the search bar wider or narrower */
+    max-width: 800px; /* This prevents the bar from becoming too wide on large screens */
     padding: 10px;
-    font-size: 16px;
-    border: 2px solid #333;
+    font-size: 20px;
     border-radius: 5px;
-    margin-bottom: 20px;
+    border: 1px solid #ccc;
 }
 
 #comboVisual {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 800px;
+    margin-top: 20px;
 }
+
+    #comboVisual img {
+        width: 50px;
+        height: 50px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
 
 .combo-image {
     width: 50px;
     height: 50px;
     margin: 5px;
 }
+#comboVisual {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    #comboVisual img {
+        width: 70px;
+        height: 70px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }

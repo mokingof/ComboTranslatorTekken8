@@ -4,24 +4,26 @@
 }
 
 <div class="combo-display-container">
-    <input type="text" id="comboInput" placeholder="Enter your Tekken 8 combo here" />
+    <input type="text" id="comboInput" placeholder="Enter Combo" />
     <div id="comboVisual"></div>
 </div>
+
+
 
 <script>
     document.getElementById('comboInput').addEventListener('input', function (e) {
         let input = e.target.value;
         let visualDiv = document.getElementById('comboVisual');
 
+        visualDiv.innerHTML = ''; // Clear previous results
+
         if (input.trim() === '') {
-            visualDiv.innerHTML = ''; // Clear the visual area if input is empty
-            return; // Exit the function early
+            return; // Exit the function early if input is empty
         }
 
         fetch('/ComboDisplay?handler=ParseCombo&combo=' + encodeURIComponent(input))
             .then(response => response.json())
             .then(data => {
-                visualDiv.innerHTML = '';
                 if (Array.isArray(data) && data.length > 0) {
                     data.forEach(imagePath => {
                         let img = document.createElement('img');
