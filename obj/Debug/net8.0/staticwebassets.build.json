@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tBbENl63jt71jnSurB2i2QWMCr9P8yf5TaK44tDF5ms=",
+  "Hash": "DsbzCIECW3vCBtTFmm4JRQTzSyeqhIYSVgo6EwMakjE=",
   "Source": "ComboTranslatorTekken8",
   "BasePath": "_content/ComboTranslatorTekken8",
   "Mode": "Default",
@@ -796,12 +796,12 @@
       "OriginalItemSpec": "wwwroot\\Images\\AllImages\\SIdeStepLeft.png"
     },
     {
-      "Identity": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\SideStepRight .png",
+      "Identity": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\SideStepRight.png",
       "SourceId": "ComboTranslatorTekken8",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\",
       "BasePath": "_content/ComboTranslatorTekken8",
-      "RelativePath": "Images/AllImages/SideStepRight .png",
+      "RelativePath": "Images/AllImages/SideStepRight.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -812,7 +812,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\AllImages\\SideStepRight .png"
+      "OriginalItemSpec": "wwwroot\\Images\\AllImages\\SideStepRight.png"
     },
     {
       "Identity": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\SideWalkLeft.png",
@@ -1119,12 +1119,12 @@
       "OriginalItemSpec": "wwwroot\\Images\\AllImages\\WallBreak.png"
     },
     {
-      "Identity": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\WhileRunnining.png",
+      "Identity": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\WhileRunning.png",
       "SourceId": "ComboTranslatorTekken8",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\",
       "BasePath": "_content/ComboTranslatorTekken8",
-      "RelativePath": "Images/AllImages/WhileRunnining.png",
+      "RelativePath": "Images/AllImages/WhileRunning.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1135,7 +1135,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\AllImages\\WhileRunnining.png"
+      "OriginalItemSpec": "wwwroot\\Images\\AllImages\\WhileRunning.png"
     },
     {
       "Identity": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\WhileStanding.png",
@@ -2069,12 +2069,12 @@
       "OriginalItemSpec": "wwwroot\\Images\\Miscellaneous\\Tornado.png"
     },
     {
-      "Identity": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\Miscellaneous\\WhileRunnining.png",
+      "Identity": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\Miscellaneous\\WhileRunning.png",
       "SourceId": "ComboTranslatorTekken8",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\",
       "BasePath": "_content/ComboTranslatorTekken8",
-      "RelativePath": "Images/Miscellaneous/WhileRunnining.png",
+      "RelativePath": "Images/Miscellaneous/WhileRunning.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2085,7 +2085,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Miscellaneous\\WhileRunnining.png"
+      "OriginalItemSpec": "wwwroot\\Images\\Miscellaneous\\WhileRunning.png"
     },
     {
       "Identity": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\Miscellaneous\\WhileStanding.png",

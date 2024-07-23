@@ -76,8 +76,8 @@ namespace ComboTranslatorTekken8.Model
             commandImages.Add(InputCommand.CrouchCancel, "Images/Miscellaneous/CrouchCancel.png");
             commandImages.Add(InputCommand.Dash, "Images/Miscellaneous/Dash.png");
             commandImages.Add(InputCommand.FullCrouch, "Images/Miscellaneous/FullCrouch.png");
-            // commandImages.Add(InputCommand.Heat, "Images/Miscellaneous/Heat.png");
-            commandImages.Add(InputCommand.HeatBurst, "Images/Miscellaneous/HeatBurtst.png");
+            commandImages.Add(InputCommand.Heat, "Images/Miscellaneous/Heat.png");
+            commandImages.Add(InputCommand.HeatBurst, "Images/Miscellaneous/HeatBurst.png");
             commandImages.Add(InputCommand.HeatSmash, "Images/Miscellaneous/HeatSmash.png");
             commandImages.Add(InputCommand.JustFrame, "Images/Miscellaneous/JustFrame.png");
             commandImages.Add(InputCommand.MicroDash, "Images/Miscellaneous/Microdash.png");

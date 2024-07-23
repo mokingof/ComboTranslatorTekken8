@@ -16,7 +16,7 @@ namespace ComboTranslatorTekken8.Model
             for (int i = 0; i < tokens.Count; i++)
             {
                 storeParsedCommands.Add(FindMatches(tokens[i]));
-              
+
             }
 
             return storeParsedCommands;
@@ -26,9 +26,10 @@ namespace ComboTranslatorTekken8.Model
 
             return ParseMultiButtons(inputString)
                 ?? ParseMultiDirections(inputString)
-                ?? ParseSingleButton(inputString) 
-                ?? ParseSingleDirection(inputString) 
-                ?? ParseStageGimmicks(inputString);
+                ?? ParseSingleButton(inputString)
+                ?? ParseSingleDirection(inputString)
+                ?? ParseStageGimmicks(inputString)
+                ?? ParseMisc(inputString);
         }
         private InputCommand? ParseSingleButton(string notation)
         {
@@ -88,10 +89,10 @@ namespace ComboTranslatorTekken8.Model
                 "ub" or "u/b" => InputCommand.UpBack,
                 "df" or "d/f" => InputCommand.DownForward,
                 "db" or "d/b" => InputCommand.DownBack,
-                "UF" => InputCommand.HoldUpForward,
-                "UB" => InputCommand.HoldUpBack,
-                "DF" => InputCommand.HoldDownForward,
-                "DB" => InputCommand.HoldDownBack,
+                "UF" or "U/F" => InputCommand.HoldUpForward,
+                "UB" or "U/B" => InputCommand.HoldUpBack,
+                "DF" or "D/F" => InputCommand.HoldDownForward,
+                "DB" or "D/B" => InputCommand.HoldDownBack,
                 "qcf" or "QCF" => InputCommand.QuarterCircleForward,
                 "qcb" or "QCB" => InputCommand.QuarterCircleBack,
                 "hcf" or "HCF" => InputCommand.HalfCircleForward,
@@ -124,6 +125,7 @@ namespace ComboTranslatorTekken8.Model
         {
             return notation.ToLower() switch
             {
+                "h!" => InputCommand.Heat,
                 "hs!" => InputCommand.HeatSmash,
                 "hd!" => InputCommand.HeadDash,
                 "hb!" => InputCommand.HeatBurst,

@@ -153,8 +153,8 @@
       "PackagePath": "staticwebassets\\Images\\AllImages\\SideStepCrouch.png"
     },
     {
-      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\SideStepRight .png",
-      "PackagePath": "staticwebassets\\Images\\AllImages\\SideStepRight .png"
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\SideStepRight.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\SideStepRight.png"
     },
     {
       "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\SideWalkLeft.png",
@@ -221,8 +221,8 @@
       "PackagePath": "staticwebassets\\Images\\AllImages\\WallBreak.png"
     },
     {
-      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\WhileRunnining.png",
-      "PackagePath": "staticwebassets\\Images\\AllImages\\WhileRunnining.png"
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\WhileRunning.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\WhileRunning.png"
     },
     {
       "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\WhileStanding.png",
@@ -421,8 +421,8 @@
       "PackagePath": "staticwebassets\\Images\\Miscellaneous\\Tornado.png"
     },
     {
-      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\Miscellaneous\\WhileRunnining.png",
-      "PackagePath": "staticwebassets\\Images\\Miscellaneous\\WhileRunnining.png"
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\Miscellaneous\\WhileRunning.png",
+      "PackagePath": "staticwebassets\\Images\\Miscellaneous\\WhileRunning.png"
     },
     {
       "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\Miscellaneous\\WhileStanding.png",
