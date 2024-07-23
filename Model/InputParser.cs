@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace ComboTranslatorTekken8.Model
 {
@@ -21,8 +22,30 @@ namespace ComboTranslatorTekken8.Model
 
             return storeParsedCommands;
         }
+
+        private bool IsCombinedInput(string inputString)
+        {
+            bool hasDirection = inputString.Any(char.IsLetter);
+            bool hasButton = inputString.Any(char.IsDigit);
+            return hasDirection && hasButton;
+        }
         private InputCommand? FindMatches(string inputString)
         {
+            if (IsCombinedInput(inputString))
+            {
+                var clean = Regex.Replace(inputString, "[^A-Za-z0-9 ]", "");
+
+                var direction = new string(clean
+                    .SkipWhile(c => char.IsDigit(c))
+                    .TakeWhile(c => !char.IsDigit(c))
+                    .ToArray());
+
+                var input = new string(clean
+                    .SkipWhile(c => !char.IsDigit(c))
+                    .TakeWhile(c => char.IsDigit(c))
+                    .ToArray());
+
+            }
 
             return ParseMultiButtons(inputString)
                 ?? ParseMultiDirections(inputString)
