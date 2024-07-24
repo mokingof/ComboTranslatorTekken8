@@ -71,6 +71,7 @@ namespace ComboTranslatorTekken8.Model
             commandImages.Add(InputCommand.Forward, "Images/Arrows/Forward.png");
             commandImages.Add(InputCommand.HoldForward, "Images/Arrows/HoldForward.png");
             commandImages.Add(InputCommand.Neutral, "Images/Arrows/Neutrol.png");
+            commandImages.Add(InputCommand.QuarterCircleForward, "Images/Arrows/qcf.png");
             // Miscellaneous
             commandImages.Add(InputCommand.CounterHit, "Images/Miscellaneous/CounterHit.png");
             commandImages.Add(InputCommand.CrouchCancel, "Images/Miscellaneous/CrouchCancel.png");

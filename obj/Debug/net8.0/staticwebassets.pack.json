@@ -229,6 +229,10 @@
       "PackagePath": "staticwebassets\\Images\\AllImages\\WhileStanding.png"
     },
     {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\qcf.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\qcf.png"
+    },
+    {
       "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\Arrows\\Back.png",
       "PackagePath": "staticwebassets\\Images\\Arrows\\Back.png"
     },
@@ -295,6 +299,10 @@
     {
       "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\Arrows\\UpForward.png",
       "PackagePath": "staticwebassets\\Images\\Arrows\\UpForward.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\Arrows\\qcf.png",
+      "PackagePath": "staticwebassets\\Images\\Arrows\\qcf.png"
     },
     {
       "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\Buttons\\Four.png",

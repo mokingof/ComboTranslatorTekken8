@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DsbzCIECW3vCBtTFmm4JRQTzSyeqhIYSVgo6EwMakjE=",
+  "Hash": "xezfHWyXjIgZvXzkoKSKKzYR+8zvn1OyGu/jKS8gFo4=",
   "Source": "ComboTranslatorTekken8",
   "BasePath": "_content/ComboTranslatorTekken8",
   "Mode": "Default",
@@ -758,6 +758,25 @@
       "OriginalItemSpec": "wwwroot\\Images\\AllImages\\OneTwoThreeFour.png"
     },
     {
+      "Identity": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\qcf.png",
+      "SourceId": "ComboTranslatorTekken8",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\",
+      "BasePath": "_content/ComboTranslatorTekken8",
+      "RelativePath": "Images/AllImages/qcf.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\AllImages\\qcf.png"
+    },
+    {
       "Identity": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\SideStepCrouch.png",
       "SourceId": "ComboTranslatorTekken8",
       "SourceType": "Discovered",
@@ -1421,6 +1440,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\Arrows\\Neutrol.png"
+    },
+    {
+      "Identity": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\Arrows\\qcf.png",
+      "SourceId": "ComboTranslatorTekken8",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\",
+      "BasePath": "_content/ComboTranslatorTekken8",
+      "RelativePath": "Images/Arrows/qcf.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Arrows\\qcf.png"
     },
     {
       "Identity": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\Arrows\\Up.png",

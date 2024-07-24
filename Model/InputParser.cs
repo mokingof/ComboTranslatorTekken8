@@ -11,15 +11,44 @@ namespace ComboTranslatorTekken8.Model
         {
             char[] delimiters = { ',', ' ' };
             List<string> tokens = inputString.Split(delimiters).ToList();
-
             List<InputCommand?> storeParsedCommands = new();
 
             for (int i = 0; i < tokens.Count; i++)
             {
-                storeParsedCommands.Add(FindMatches(tokens[i]));
+                if (IsCombinedInput(tokens[i]))
+                {
+                    // Cleaning The string for manipulation
+                    var CleanString = Regex.Replace(tokens[i], "[^A-Za-z0-9 ]", "");
+
+                    // Using LINQ to skip all integers in the string
+                    var direction = new string(CleanString
+                        .SkipWhile(c => char.IsDigit(c))
+                        .TakeWhile(c => !char.IsDigit(c))
+                        .ToArray());
+
+                    storeParsedCommands.Add(ParseSingleDirection(direction)
+                        ?? ParseMultiDirections(direction)
+                        ?? ParseStageGimmicks(direction)
+                        ?? ParseMisc(direction));
+
+                    // Using LINQ to skip all non integers in the string
+                    var input = new string(CleanString
+                        .SkipWhile(c => !char.IsDigit(c))
+                        .TakeWhile(c => char.IsDigit(c))
+                        .ToArray());
+                    storeParsedCommands.Add(ParseSingleButton(input) ?? ParseMultiButtons(input));
+                }
+                else
+                {
+                    storeParsedCommands.Add(ParseSingleButton(tokens[i])
+                        ?? ParseMultiButtons(tokens[i])
+                        ?? ParseSingleDirection(tokens[i])
+                        ?? ParseMultiDirections(tokens[i])
+                        ?? ParseStageGimmicks(tokens[i])
+                        ?? ParseMisc(tokens[i]));
+                }
 
             }
-
             return storeParsedCommands;
         }
 
@@ -29,31 +58,7 @@ namespace ComboTranslatorTekken8.Model
             bool hasButton = inputString.Any(char.IsDigit);
             return hasDirection && hasButton;
         }
-        private InputCommand? FindMatches(string inputString)
-        {
-            if (IsCombinedInput(inputString))
-            {
-                var clean = Regex.Replace(inputString, "[^A-Za-z0-9 ]", "");
 
-                var direction = new string(clean
-                    .SkipWhile(c => char.IsDigit(c))
-                    .TakeWhile(c => !char.IsDigit(c))
-                    .ToArray());
-
-                var input = new string(clean
-                    .SkipWhile(c => !char.IsDigit(c))
-                    .TakeWhile(c => char.IsDigit(c))
-                    .ToArray());
-
-            }
-
-            return ParseMultiButtons(inputString)
-                ?? ParseMultiDirections(inputString)
-                ?? ParseSingleButton(inputString)
-                ?? ParseSingleDirection(inputString)
-                ?? ParseStageGimmicks(inputString)
-                ?? ParseMisc(inputString);
-        }
         private InputCommand? ParseSingleButton(string notation)
         {
             return notation switch
