@@ -9,7 +9,7 @@ namespace ComboTranslatorTekken8.Model
 
         public List<InputCommand?> ParseInput(string inputString)
         {
-            char[] delimiters = { ',', ' ' };
+            char[] delimiters = {',' ,' ' };
             List<string> tokens = inputString.Split(delimiters).ToList();
             List<InputCommand?> storeParsedCommands = new();
 
@@ -17,10 +17,10 @@ namespace ComboTranslatorTekken8.Model
             {
                 if (IsCombinedInput(tokens[i]))
                 {
-                    // Cleaning The string for manipulation
+                   
                     var CleanString = Regex.Replace(tokens[i], "[^A-Za-z0-9 ]", "");
 
-                    // Using LINQ to skip all integers in the string
+               
                     var direction = new string(CleanString
                         .SkipWhile(c => char.IsDigit(c))
                         .TakeWhile(c => !char.IsDigit(c))
@@ -163,11 +163,11 @@ namespace ComboTranslatorTekken8.Model
                 "fc" => InputCommand.FullCrouch,
                 "ch" => InputCommand.CounterHit,
                 "dash" => InputCommand.Dash,
-                "microdash" or "mc" => InputCommand.MicroDash,
+                "microdash" or "md" => InputCommand.MicroDash,
                 "wr" => InputCommand.WhileRunning,
                 "ws" => InputCommand.WhileStanding,
                 "~" => InputCommand.Tilde,
-                //"," => InputCommand.Seperator,
+                ">" => InputCommand.Separator,
                 _ => null
             };
         }
