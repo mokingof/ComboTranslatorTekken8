@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.DataProtection.KeyManagement;
+﻿using ComboTranslatorTekken8.Pages.Shared;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
@@ -6,7 +7,38 @@ namespace ComboTranslatorTekken8.Model
 {
     public class InputParser
     {
+        private readonly Dictionary<string, InputCommand> inputMap;
 
+        public InputParser()
+        {
+            inputMap = new Dictionary<string, InputCommand>();
+            InitializeInputMap();
+        }
+
+        private void InitializeInputMap()
+        {
+       
+            var type = typeof(InputCommand);
+            var values = Enum.GetValues(type);
+
+            foreach (InputCommand value in values)
+            {
+                var memberInfo = type.GetMember(value.ToString()).FirstOrDefault();
+                var attributes = memberInfo?.GetCustomAttributes<InputStringAttribute>(false);
+
+                if (attributes != null)
+                {
+                    foreach (var attribute in attributes)
+                    {
+                        // Using reflection to populate the inputMap
+                        inputMap[attribute.InputString] = value;
+                    }
+                }
+
+              
+            }
+
+        }
         public List<InputCommand?> ParseInput(string inputString)
         {
             char[] delimiters = {',' ,' ' };
@@ -25,29 +57,19 @@ namespace ComboTranslatorTekken8.Model
                         .SkipWhile(c => char.IsDigit(c))
                         .TakeWhile(c => !char.IsDigit(c))
                         .ToArray());
-
-                    storeParsedCommands.Add(ParseSingleDirection(direction)
-                        ?? ParseMultiDirections(direction)
-                        ?? ParseStageGimmicks(direction)
-                        ?? ParseMisc(direction));
-
+                    storeParsedCommands.Add(inputMap.GetValueOrDefault(direction));
+                 
                     // Using LINQ to skip all non integers in the string
                     var input = new string(CleanString
                         .SkipWhile(c => !char.IsDigit(c))
                         .TakeWhile(c => char.IsDigit(c))
                         .ToArray());
-                    storeParsedCommands.Add(ParseSingleButton(input) ?? ParseMultiButtons(input));
+                    storeParsedCommands.Add(inputMap.GetValueOrDefault(input));
                 }
                 else
                 {
-                    storeParsedCommands.Add(ParseSingleButton(tokens[i])
-                        ?? ParseMultiButtons(tokens[i])
-                        ?? ParseSingleDirection(tokens[i])
-                        ?? ParseMultiDirections(tokens[i])
-                        ?? ParseStageGimmicks(tokens[i])
-                        ?? ParseMisc(tokens[i]));
+                    storeParsedCommands.Add(inputMap.GetValueOrDefault(tokens[i]));
                 }
-
             }
             return storeParsedCommands;
         }
