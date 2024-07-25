@@ -233,6 +233,298 @@
       "PackagePath": "staticwebassets\\Images\\AllImages\\WhileStanding.png"
     },
     {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\aop.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\aop.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\bkp.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\bkp.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\bok.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\bok.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\bt.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\bt.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\cd.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\cd.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\cfo.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\cfo.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\cft.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\cft.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\dbt.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\dbt.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\dck.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\dck.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\den.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\den.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\des.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\des.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\dew.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\dew.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\dgf.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\dgf.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\dpd.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\dpd.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\dss.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\dss.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\ext_dck.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\ext_dck.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\flea.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\flea.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\flk.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\flk.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\fly.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\fly.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\gen.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\gen.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\gmc.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\gmc.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\gmh.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\gmh.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\gs.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\gs.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\hae.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\hae.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\hbs.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\hbs.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\hms.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\hms.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\hrm.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\hrm.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\hsp.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\hsp.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\hyp.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\hyp.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\iai.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\iai.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\ind.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\ind.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\isw.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\isw.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\izu.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\izu.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\jag.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\jag.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\jgs.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\jgs.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\kin.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\kin.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\knk.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\knk.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\len.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\len.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\lff.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\lff.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\lfs.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\lfs.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\lib.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\lib.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\lnh.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\lnh.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\mcr.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\mcr.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\med.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\med.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\mia.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\mia.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\mnt.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\mnt.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\nss.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\nss.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\nwg.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\nwg.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\pab.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\pab.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\prf.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\prf.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\rab.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\rab.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\rds.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\rds.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\rff.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\rff.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\rfs.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\rfs.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\rlx.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\rlx.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\roll.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\roll.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\sbt.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\sbt.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\scr.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\scr.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\sen.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\sen.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\sit.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\sit.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\sne.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\sne.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\snk.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\snk.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\stb.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\stb.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\stc.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\stc.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\swa.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\swa.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\swy.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\swy.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\szn.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\szn.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\taw.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\taw.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\trt.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\trt.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\uns.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\uns.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\vac.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\vac.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\wra.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\wra.png"
+    },
+    {
+      "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\AllImages\\zen.png",
+      "PackagePath": "staticwebassets\\Images\\AllImages\\zen.png"
+    },
+    {
       "Id": "C:\\Users\\abdill\\source\\repos\\ComboTranslatorTekken8\\ComboTranslatorTekken8\\wwwroot\\Images\\Arrows\\Back.png",
       "PackagePath": "staticwebassets\\Images\\Arrows\\Back.png"
     },
