@@ -5,8 +5,9 @@ namespace ComboTranslatorTekken8.Model
     public enum TokenType
     {
         Button,
-        Direction,
         CombinedButton,
+        Direction,
+        HoldDirection,
         CombinedDirection,
         Miscellaneous,
         StageInteractions,

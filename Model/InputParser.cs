@@ -14,10 +14,8 @@ namespace ComboTranslatorTekken8.Model
             inputMap = new Dictionary<string, InputCommand>();
             InitializeInputMap();
         }
-
         private void InitializeInputMap()
         {
-
             var type = typeof(InputCommand);
             var values = Enum.GetValues(type);
 
@@ -48,21 +46,13 @@ namespace ComboTranslatorTekken8.Model
                 {
                     storeParsedCommands.Add(inputMap[token]);
                 }
-                else if (IsCombinedInput(token))
-                {
-                    
-                }
+               
             }
 
             return storeParsedCommands;
         }
      
-        private bool IsCombinedInput(string inputString)
-        {
-            bool hasDirection = inputString.Any(char.IsLetter);
-            bool hasButton = inputString.Any(char.IsDigit);
-            return hasDirection && hasButton;
-        }
+       
 
     }
 }
