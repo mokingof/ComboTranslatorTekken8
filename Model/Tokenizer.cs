@@ -18,15 +18,15 @@ namespace ComboTranslatorTekken8.Model
         {
             List<Token> Tokens = new();
 
-            char[] delimiters = { ',' };
+            char[] delimiters = { ' ' };
             List<string> temp = input.Split(delimiters).ToList();
 
             for (int i = 0; i < temp.Count; i++)
             {
 
-                if (temp[i].All(char.IsDigit))
+                if (temp[i].Any(char.IsDigit))
                 {
-                    if (i + 1 < temp.Count && temp[i + 1].Equals("+"))
+                    if (temp[i].Contains("+"))
                     {
                         var combination = CombinationButtons(temp[i]);
                         Tokens.Add(new Token(TokenType.CombinedButton, combination, i));
@@ -40,6 +40,7 @@ namespace ComboTranslatorTekken8.Model
                 else if (!temp[i].Any(char.IsDigit) && temp[i].Length == 1)
                 {
                     var direction = Directions(temp[i]);
+                    Tokens.Add(new Token(TokenType.Direction, direction, i));
                 }
             }
             return Tokens;
@@ -52,14 +53,15 @@ namespace ComboTranslatorTekken8.Model
         }
         private string CombinationButtons(string input)
         {
-            if (ContainsDuplicate(input))
+            Console.WriteLine(input);
+            if (ContainsNoDuplicate(input))
             {
-                throw new Exception("Error: Duplicate button input");
+                Match = MultiButton.Match(input);
+                return Match.Value;
+                
             }
-            Match = MultiButton.Match(input);
 
-            return Match.Value;
-
+            return "Error: Duplicate button input";
         }
         private string Directions(string input)
         {
@@ -75,9 +77,9 @@ namespace ComboTranslatorTekken8.Model
             return null;
         }
 
-        private bool ContainsDuplicate(string input)
+        private bool ContainsNoDuplicate(string input)
         {
-            return input.Distinct().Count() == input.Length;
+            return input.Replace("+", "").Distinct().Count() == input.Replace("+","").Length;
 
         }
 

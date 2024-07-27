@@ -8,7 +8,7 @@ namespace ComboTranslatorTekken8.Model
     public class InputParser
     {
         private readonly Dictionary<string, InputCommand> inputMap;
-
+        private readonly Tokenizer tokenizer = new();
         public InputParser()
         {
             inputMap = new Dictionary<string, InputCommand>();
@@ -37,22 +37,26 @@ namespace ComboTranslatorTekken8.Model
         }
         public List<InputCommand?> ParseInput(string inputString)
         {
-            List<string> tokens = new();
+            List<Token> Tokens = tokenizer.TokenizeString(inputString);
             List<InputCommand?> storeParsedCommands = new();
 
-            foreach (var token in tokens)
+            foreach (var token in Tokens)
             {
-                if (inputMap.ContainsKey(token))
+                 if (inputMap.ContainsKey(token.Value))
                 {
-                    storeParsedCommands.Add(inputMap[token]);
+                    storeParsedCommands.Add(inputMap[token.Value]);
                 }
+               
+                    
+                
                
             }
 
+            
             return storeParsedCommands;
         }
      
        
-
+        
     }
 }
