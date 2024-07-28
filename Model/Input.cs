@@ -20,7 +20,7 @@
         [InputString("1+2+3+4")] OneTwoThreeFour,
 
         // Direction Commands
-        [InputString("N")] Neutral,
+        [InputString("n")] Neutral,
         [InputString("f")] Forward,
         [InputString("b")] Back,
         [InputString("u")] Up,
@@ -48,7 +48,7 @@
         [InputString("swr"), InputString("SWR")] SideWalkRight,
         [InputString("ssc"), InputString("SSC")] SideStepCrouch,
 
-        // Stage Gimmicks
+        // Stage Interactions
         [InputString("bb!"), InputString("BB!")] BalconyBreak,
         [InputString("fbi!"), InputString("FBI!")] FloorBlast,
         [InputString("fb!"), InputString("FB!")] FloorBreak,

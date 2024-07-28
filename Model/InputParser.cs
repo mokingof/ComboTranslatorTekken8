@@ -42,21 +42,12 @@ namespace ComboTranslatorTekken8.Model
 
             foreach (var token in Tokens)
             {
-                 if (inputMap.ContainsKey(token.Value))
+                if (inputMap.ContainsKey(token.Value))
                 {
                     storeParsedCommands.Add(inputMap[token.Value]);
                 }
-               
-                    
-                
-               
             }
-
-            
             return storeParsedCommands;
         }
-     
-       
-        
     }
 }
