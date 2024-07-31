@@ -12,7 +12,7 @@ namespace ComboTranslatorTekken8.Model
     public class Tokenizer
     {
         // Tekken Notations
-        HashSet<string> SingleButtons = new HashSet<string> { "1", "2", "3", "4" };
+        HashSet<string> SingleButton = new HashSet<string> { "1", "2", "3", "4" };
         HashSet<string> CombinedButtons = new HashSet<string> { "1+2", "1+3", "1+4", "2+3", "2+4", "3+4", "1+2+3", "1+2+4", "1+3+4", "2+3+4", "1+2+3+4" };
         HashSet<string> SingleDirection = new HashSet<string> { "d", "f", "u", "b", "n", "D", "F", "U", "B", "N" };
         HashSet<string> CombinedDirection = new HashSet<string> { "uf", "ub", "df", "db", "qcf", "qcb", "hcf", "hcb", "UF", "UB", "DF", "DB" };
@@ -24,12 +24,12 @@ namespace ComboTranslatorTekken8.Model
         string Value = "";
         public List<Token> TokenizeString(string input)
         {
-            string comboSplit = AddComboToken(input);
-            List<string> splitInput = comboSplit.Split(',').ToList();
+            List<string> comboSplit = AddComboToken(input);
 
-            for (int i = 0; i < splitInput.Count; i++)
+            for (int i = 0; i < comboSplit.Count; i++)
             {
-                Value = splitInput[i];
+                Value = comboSplit[i];
+
                 if (IsSingleButton(Value))
                 {
                     AddToken(TokenType.SingleButtons, Value, i);
@@ -42,11 +42,11 @@ namespace ComboTranslatorTekken8.Model
                 {
                     AddToken(TokenType.SingleDirection, Value, i);
                 }
-                else if (IsCombindDirection(Value.Replace("/", "")))
+                else if (IsCombindDirection(Value))
                 {
                     AddToken(TokenType.CombinedDirection, Value, i);
                 }
-             /*   else if (IsMiscellaneous(Value.ToLower()))
+                else if (IsMiscellaneous(Value.ToLower()))
                 {
                     AddToken(TokenType.Miscellaneous, Value, i);
                 }
@@ -57,41 +57,66 @@ namespace ComboTranslatorTekken8.Model
                 else if (Stances.Contains(Value.ToLower()))
                 {
                     AddToken(TokenType.Stances, Value, i);
-                }*/
+                }
             }
             return Tokens;
         }
 
-        private string AddComboToken(string value)
+        private List<string> AddComboToken(string value)
         {
-            //f1
-            //b12                            ws23,4u3, t!, f4:2 
-            //f1+2+3
-            //df4
-            //df1+2
-            //qcf3+4
-            //qcf3
-            //b2f    
-            string newValue = "";
+           // WORKING ---> f1 UB12 b2f d1+2+3 df4 df1+2
+          // TD ---> ws23,4u3, t!, f4:2 qcf3+4 qcf3
+
             char[] characters = value.ToCharArray();
+            List<string> tokens = new List<string>();
 
-            for (int i = 0; i < characters.Length; i++)
+            // First Pass
+            foreach (char c in characters)
             {
-                if (i + 1 < characters.Length && IsSingleDirection(characters[i + 1].ToString()))
+                tokens.Add(c.ToString());
+            }
+            List<string> CombinedTokens = new List<string>();
+
+            // Second pass Directions And Button Combinations
+            for (int i = 0; i < tokens.Count; i++)
+            {
+                if (i + 1 < tokens.Count && SingleDirection.Contains(tokens[i]) && SingleDirection.Contains(tokens[i + 1]))
                 {
-                    newValue += characters[i].ToString() + characters[i + 1] + ",";
-
+                    string combinedDirection = tokens[i] + tokens[i + 1];
+                    CombinedTokens.Add(combinedDirection);
+                   i++; 
                 }
-
-            
+                else if (SingleDirection.Contains(tokens[i]))
+                {
+                    CombinedTokens.Add(tokens[i]);
+                }
+                else if (SingleButton.Contains(tokens[i]))
+                {
+                    string combinedButton = tokens[i];
+                    int j = i + 1;
+                    while (j < tokens.Count - 1 && tokens[j] == "+" && SingleButton.Contains(tokens[j + 1]))
+                    {
+                        combinedButton += tokens[j] + tokens[j + 1];
+                        j += 2;
+                    }
+                    if (combinedButton.Length > 1)
+                    {
+                        CombinedTokens.Add(combinedButton);
+                        i = j - 1;
+                    }
+                    else
+                    {
+                        CombinedTokens.Add(tokens[i]);
+                    }
+                }
 
             }
 
-            return newValue;
+            return CombinedTokens;
         }
 
 
-        private bool IsSingleButton(string value) => SingleButtons.Contains(value);
+        private bool IsSingleButton(string value) => SingleButton.Contains(value);
         private bool IsCombindButton(string value) => CombinedButtons.Contains(value);
         private bool IsSingleDirection(string value) => SingleDirection.Contains(value);
         private bool IsCombindDirection(string value) => CombinedDirection.Contains(value);
