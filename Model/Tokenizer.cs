@@ -19,26 +19,22 @@ namespace ComboTranslatorTekken8.Model
         HashSet<string> Miscellaneous = new HashSet<string> { "h!", "hs!", "hd!", "hb!", "t!", "jf", "cc", "fc", "ch", "dash", "mc", "wr", "ws", "~", "," };
         HashSet<string> StageInteractions = new HashSet<string> { "bb!", "fbi!", "fb!", "w!", "wbo!", "wbr!" };
         HashSet<string> Stances = new HashSet<string> { "aop", "bkp", "bok", "bt", "cd", "cfo ", "ctf", "dbt", "dck", "den", "den", "des", "dew", "dgf", "dpd", "dss", "dss", "ctf", "et_dck", "flea", "flk", "fly", "gen", "gmc", "gmh", "gs", "hae", "hbs", "hms", "hyp", "iai", "ind", "isw", "izu", "jag", "jgs", "kin", "knk", "len", "iff", "lfs", "lib", "inh", "mcr", "med", "mia", "mnt", "nss", "nwg", "pab", "prf", "rab", "rds", "rff", "rfs", "rlx", "roll", "sbt", "scr", "sen", "sit", "sne", "snk", "stb", "stc", "swa", "swy", "szn", "taw", "trt", "uns", "vac", "wra", "zen" };
-
         List<Token> Tokens = new();
+        private readonly ComboContext context;
+        public Tokenizer()
+        {
+            context = new ComboContext();
+        }
+
         string Value = "";
         public List<Token> TokenizeString(string input)
         {
-            List<string> comboSplit = new();
-            if (NotAll(input))
-            {
-                comboSplit = AddComboToken(input);
-            }
-            else
-            {
-                comboSplit = input.Split(',').ToList();
+            List<Token> tokens = new(); 
+            context.ProcessInput(input);
 
-            }
-
-
-            for (int i = 0; i < comboSplit.Count; i++)
+            for (int i = 0; i < tokens.Count; i++)
             {
-                Value = comboSplit[i];
+                Value = tokens[i].Value;
 
                 if (IsSingleButton(Value))
                 {
@@ -69,61 +65,8 @@ namespace ComboTranslatorTekken8.Model
                     AddToken(TokenType.Stances, Value, i);
                 }
             }
-            return Tokens;
+            return tokens;
         }
-
-        private List<string> AddComboToken(string value)
-        {
-            // WORKING ---> f1 UB12 b2f d1+2+3 df4 df1+2 4u3
-            // TO DO ---> ws23, t!, f4:2 qcf3+4 qcf3
-
-            char[] characters = value.ToCharArray();
-            List<string> tokens = new List<string>();
-
-            // First Pass
-            foreach (char c in characters)
-            {
-                tokens.Add(c.ToString());
-            }
-            List<string> CombinedTokens = new List<string>();
-
-            // Second pass Directions And Button Combinations
-            for (int i = 0; i < tokens.Count; i++)
-            {
-                if (i + 1 < tokens.Count && SingleDirection.Contains(tokens[i]) && SingleDirection.Contains(tokens[i + 1]))
-                {
-                    string combinedDirection = tokens[i] + tokens[i + 1];
-                    CombinedTokens.Add(combinedDirection);
-                    i++;
-                }
-                else if (SingleDirection.Contains(tokens[i]))
-                {
-                    CombinedTokens.Add(tokens[i]);
-                }
-                else if (SingleButton.Contains(tokens[i]))
-                {
-                    string combinedButton = tokens[i];
-                    int j = i + 1;
-                    while (j < tokens.Count - 1 && tokens[j] == "+" && SingleButton.Contains(tokens[j + 1]))
-                    {
-                        combinedButton += tokens[j] + tokens[j + 1];
-                        j += 2;
-                    }
-                    if (combinedButton.Length > 1)
-                    {
-                        CombinedTokens.Add(combinedButton);
-                        i = j - 1;
-                    }
-                    else
-                    {
-                        CombinedTokens.Add(tokens[i]);
-                    }
-                }
-            }
-            return CombinedTokens;
-
-        }
-
 
         private bool IsSingleButton(string value) => SingleButton.Contains(value);
         private bool IsCombindButton(string value) => CombinedButtons.Contains(value);

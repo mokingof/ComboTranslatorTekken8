@@ -8,10 +8,11 @@ namespace ComboTranslatorTekken8.Model
     public class InputParser
     {
         private readonly Dictionary<string, InputCommand> inputMap;
-        private readonly Tokenizer tokenizer = new();
+        private readonly ComboContext comboContext;
         public InputParser()
         {
             inputMap = new Dictionary<string, InputCommand>();
+            comboContext = new ComboContext();
             InitializeInputMap();
         }
         private void InitializeInputMap()
@@ -37,10 +38,12 @@ namespace ComboTranslatorTekken8.Model
         }
         public List<InputCommand?> ParseInput(string inputString)
         {
-            List<Token> Tokens = tokenizer.TokenizeString(inputString);
+            ResetContext();
+            comboContext.ProcessInput(inputString);
+            List<Token> tokens = comboContext.Tokens;
             List<InputCommand?> storeParsedCommands = new();
 
-            foreach (var token in Tokens)
+            foreach (var token in tokens)
             {
                 if (inputMap.ContainsKey(token.Value))
                 {
@@ -48,6 +51,10 @@ namespace ComboTranslatorTekken8.Model
                 }
             }
             return storeParsedCommands;
+        }
+        private void ResetContext()
+        {
+            comboContext.Reset(); 
         }
     }
 }

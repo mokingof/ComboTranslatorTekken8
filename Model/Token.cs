@@ -15,7 +15,7 @@ namespace ComboTranslatorTekken8.Model
         Stances,
     }
 
-    public class Token
+    public class Token : IToken
     {
         public TokenType Type { get; }
         public string Value { get; }

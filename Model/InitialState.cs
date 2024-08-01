@@ -1,6 +1,0 @@
-﻿namespace ComboTranslatorTekken8.Model
-{
-    public class InitialState
-    {
-    }
-}
