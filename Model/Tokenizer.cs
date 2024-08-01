@@ -24,7 +24,17 @@ namespace ComboTranslatorTekken8.Model
         string Value = "";
         public List<Token> TokenizeString(string input)
         {
-            List<string> comboSplit = AddComboToken(input);
+            List<string> comboSplit = new();
+            if (NotAll(input))
+            {
+                comboSplit = AddComboToken(input);
+            }
+            else
+            {
+                comboSplit = input.Split(',').ToList();
+
+            }
+
 
             for (int i = 0; i < comboSplit.Count; i++)
             {
@@ -64,8 +74,8 @@ namespace ComboTranslatorTekken8.Model
 
         private List<string> AddComboToken(string value)
         {
-           // WORKING ---> f1 UB12 b2f d1+2+3 df4 df1+2
-          // TD ---> ws23,4u3, t!, f4:2 qcf3+4 qcf3
+            // WORKING ---> f1 UB12 b2f d1+2+3 df4 df1+2 4u3
+            // TO DO ---> ws23, t!, f4:2 qcf3+4 qcf3
 
             char[] characters = value.ToCharArray();
             List<string> tokens = new List<string>();
@@ -84,7 +94,7 @@ namespace ComboTranslatorTekken8.Model
                 {
                     string combinedDirection = tokens[i] + tokens[i + 1];
                     CombinedTokens.Add(combinedDirection);
-                   i++; 
+                    i++;
                 }
                 else if (SingleDirection.Contains(tokens[i]))
                 {
@@ -109,10 +119,9 @@ namespace ComboTranslatorTekken8.Model
                         CombinedTokens.Add(tokens[i]);
                     }
                 }
-
             }
-
             return CombinedTokens;
+
         }
 
 
@@ -122,6 +131,8 @@ namespace ComboTranslatorTekken8.Model
         private bool IsCombindDirection(string value) => CombinedDirection.Contains(value);
         private bool IsMiscellaneous(string value) => Miscellaneous.Contains(value);
         private bool IsStageInteractions(string value) => StageInteractions.Contains(value);
+        private bool IsStance(string value) => Stances.Contains(value);
+        private bool NotAll(string value) => !IsStageInteractions(value) && !IsMiscellaneous(value) && !IsStance(value);
         private void AddToken(TokenType type, string value, int position) => Tokens.Add(new Token(type, value, position));
 
         private bool IsCombinedInput(string input)
