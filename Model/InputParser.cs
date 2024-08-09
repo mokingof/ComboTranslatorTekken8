@@ -1,4 +1,5 @@
-﻿using ComboTranslatorTekken8.Pages.Shared;
+﻿using ComboTranslatorTekken8.Model.FSM;
+using ComboTranslatorTekken8.Pages.Shared;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -8,11 +9,10 @@ namespace ComboTranslatorTekken8.Model
     public class InputParser
     {
         private readonly Dictionary<string, InputCommand> inputMap;
-        private readonly ComboContext comboContext;
+        private readonly ComboContext comboContext = new();
         public InputParser()
         {
             inputMap = new Dictionary<string, InputCommand>();
-            comboContext = new ComboContext();
             InitializeInputMap();
         }
         private void InitializeInputMap()
@@ -38,12 +38,12 @@ namespace ComboTranslatorTekken8.Model
         }
         public List<InputCommand?> ParseInput(string inputString)
         {
-            ResetContext();
+            
             comboContext.ProcessInput(inputString);
-            List<Token> tokens = comboContext.Tokens;
+            List<Token> Tokens = comboContext.GetTokens();
             List<InputCommand?> storeParsedCommands = new();
 
-            foreach (var token in tokens)
+            foreach (var token in Tokens)
             {
                 if (inputMap.ContainsKey(token.Value))
                 {
@@ -51,10 +51,6 @@ namespace ComboTranslatorTekken8.Model
                 }
             }
             return storeParsedCommands;
-        }
-        private void ResetContext()
-        {
-            comboContext.Reset(); 
         }
     }
 }

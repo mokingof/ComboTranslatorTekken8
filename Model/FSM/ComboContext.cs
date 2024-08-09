@@ -1,34 +1,34 @@
-﻿namespace ComboTranslatorTekken8.Model
+﻿namespace ComboTranslatorTekken8.Model.FSM
 {
     public class ComboContext
     {
-        private IState currentState;
+        private IState initialState;
         public List<Token> Tokens { get; private set; } = new List<Token>();
         public int CurrentPosition { get; private set; } = 0;
 
         public ComboContext()
         {
-            currentState = new CurrentState(this);
+            initialState = new InitialState(this);
         }
         public void ProcessInput(string input)
         {
             foreach (char c in input)
             {
-                currentState = currentState.HandleInput(c);
-                if (currentState is ErrorState)
+                initialState = initialState.HandleInput(c);
+                if (initialState is ErrorState)
                 {
                     // Handle error state
                     break;
                 }
             }
             // Generate final token if necessary
-            var finalToken = currentState.GenerateToken();
+            Token finalToken = initialState.GenerateToken();
             if (finalToken != null)
             {
                 AddToken(finalToken);
             }
         }
-        public void AddToken(Token token)
+        private void AddToken(Token token)
         {
             Tokens.Add(token);
             CurrentPosition++;
@@ -37,7 +37,12 @@
         {
             Tokens.Clear();
             CurrentPosition = 0;
-            currentState = new CurrentState(this);
+            initialState = new InitialState(this);
+        }
+
+        public List<Token> GetTokens()
+        {
+            return Tokens;
         }
     }
 }

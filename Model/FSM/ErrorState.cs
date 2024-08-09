@@ -1,4 +1,4 @@
-﻿namespace ComboTranslatorTekken8.Model
+﻿namespace ComboTranslatorTekken8.Model.FSM
 {
     public class ErrorState : IState
     {

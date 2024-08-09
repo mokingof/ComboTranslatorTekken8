@@ -15,7 +15,7 @@ namespace ComboTranslatorTekken8.Model
         Stances,
     }
 
-    public class Token : IToken
+    public class Token 
     {
         public TokenType Type { get; }
         public string Value { get; }
@@ -27,5 +27,11 @@ namespace ComboTranslatorTekken8.Model
             Value = value;
             Position = position;
         }
+
+
+        public string Tostring()
+        {
+            return "Type = " + Type  + "\nValue = " + Value + "\nPosition = " + Position;
+        } 
     }
 }

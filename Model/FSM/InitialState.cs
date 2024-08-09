@@ -1,16 +1,18 @@
-﻿namespace ComboTranslatorTekken8.Model
+﻿using ComboTranslatorTekken8.Model.FSM;
+
+namespace ComboTranslatorTekken8.Model
 {
-    public class CurrentState : IState
+    public class InitialState : IState
     {
 
         private readonly ComboContext context;
-        public CurrentState(ComboContext context)
+        public InitialState(ComboContext context)
         {
             this.context = context;
         }
         public bool CanCombineWith(char input)
         {
-            return null;
+            return false;
         }
 
  
@@ -19,7 +21,6 @@
         {
             return null;
         }
-
         public IState HandleInput(char input)
         {
             if (char.IsDigit(input))

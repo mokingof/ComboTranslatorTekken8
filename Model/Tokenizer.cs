@@ -6,6 +6,7 @@ using System.Runtime.Intrinsics.X86;
 using System;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using ComboTranslatorTekken8.Model.FSM;
 
 namespace ComboTranslatorTekken8.Model
 {
@@ -19,18 +20,12 @@ namespace ComboTranslatorTekken8.Model
         HashSet<string> Miscellaneous = new HashSet<string> { "h!", "hs!", "hd!", "hb!", "t!", "jf", "cc", "fc", "ch", "dash", "mc", "wr", "ws", "~", "," };
         HashSet<string> StageInteractions = new HashSet<string> { "bb!", "fbi!", "fb!", "w!", "wbo!", "wbr!" };
         HashSet<string> Stances = new HashSet<string> { "aop", "bkp", "bok", "bt", "cd", "cfo ", "ctf", "dbt", "dck", "den", "den", "des", "dew", "dgf", "dpd", "dss", "dss", "ctf", "et_dck", "flea", "flk", "fly", "gen", "gmc", "gmh", "gs", "hae", "hbs", "hms", "hyp", "iai", "ind", "isw", "izu", "jag", "jgs", "kin", "knk", "len", "iff", "lfs", "lib", "inh", "mcr", "med", "mia", "mnt", "nss", "nwg", "pab", "prf", "rab", "rds", "rff", "rfs", "rlx", "roll", "sbt", "scr", "sen", "sit", "sne", "snk", "stb", "stc", "swa", "swy", "szn", "taw", "trt", "uns", "vac", "wra", "zen" };
+        
         List<Token> Tokens = new();
-        private readonly ComboContext context;
-        public Tokenizer()
-        {
-            context = new ComboContext();
-        }
-
         string Value = "";
         public List<Token> TokenizeString(string input)
         {
             List<Token> tokens = new(); 
-            context.ProcessInput(input);
 
             for (int i = 0; i < tokens.Count; i++)
             {
@@ -78,11 +73,5 @@ namespace ComboTranslatorTekken8.Model
         private bool NotAll(string value) => !IsStageInteractions(value) && !IsMiscellaneous(value) && !IsStance(value);
         private void AddToken(TokenType type, string value, int position) => Tokens.Add(new Token(type, value, position));
 
-        private bool IsCombinedInput(string input)
-        {
-            bool hasDirection = input.Any(char.IsLetter);
-            bool hasButton = input.Any(char.IsDigit);
-            return hasDirection && hasButton;
-        }
     }
 }
