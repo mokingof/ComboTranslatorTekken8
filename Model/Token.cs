@@ -13,6 +13,7 @@ namespace ComboTranslatorTekken8.Model
         Miscellaneous,
         StageInteractions,
         Stances,
+      
     }
 
     public class Token 

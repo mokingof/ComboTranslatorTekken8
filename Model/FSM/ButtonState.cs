@@ -33,8 +33,11 @@ namespace ComboTranslatorTekken8.Model.FSM
         }
         public IState HandleInput(char input)
         {
-            
-            if (char.IsDigit(input) || CanCombineWith(input))
+            if (char.IsWhiteSpace(input))
+            {
+                return new InitialState(context);
+            }
+            else if (char.IsDigit(input) || CanCombineWith(input))
             {
                 accumulator += input;
                 return this;
@@ -42,7 +45,6 @@ namespace ComboTranslatorTekken8.Model.FSM
             else
             {
                 GenerateToken();
-       
                 return new DirectionState(context);
             }
         }

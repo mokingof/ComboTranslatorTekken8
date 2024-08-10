@@ -23,7 +23,11 @@ namespace ComboTranslatorTekken8.Model
         }
         public IState HandleInput(char input)
         {
-            if (char.IsDigit(input))
+            if (char.IsWhiteSpace(input))
+            {
+                return this;
+            }
+         else  if (char.IsDigit(input))
             {
                 return new ButtonState(context).HandleInput(input);
             }

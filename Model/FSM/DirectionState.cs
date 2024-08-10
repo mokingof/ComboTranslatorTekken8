@@ -28,7 +28,11 @@
 
         public IState HandleInput(char input)
         {
-            if (!char.IsDigit(input))
+            if (char.IsWhiteSpace(input))
+            {
+                return new InitialState(context);
+            }
+          else if (!char.IsDigit(input))
             {
                 accumulator += input;
                 return this;
