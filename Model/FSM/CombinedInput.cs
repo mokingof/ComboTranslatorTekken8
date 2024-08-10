@@ -1,15 +1,15 @@
 ﻿namespace ComboTranslatorTekken8.Model.FSM
 {
-    public class MiscellaneousState : IState
+    public class CombinedInput : IState
     {
         private readonly ComboContext context;
         private string accumulator = "";
 
-        public MiscellaneousState(ComboContext context)
+        public CombinedInput(ComboContext context)
         {
             this.context = context;
         }
-
+    
         public bool CanCombineWith(char input)
         {
             throw new NotImplementedException();
@@ -17,12 +17,12 @@
 
         public Token GenerateToken()
         {
-            return new Token(TokenType.Miscellaneous, accumulator, context.CurrentPosition);
+            throw new NotImplementedException();
         }
 
         public IState HandleInput(string input)
         {
-           accumulator = input;
+            accumulator = input;
             return this;
         }
 
