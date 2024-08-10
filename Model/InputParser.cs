@@ -38,7 +38,6 @@ namespace ComboTranslatorTekken8.Model
         }
         public List<InputCommand?> ParseInput(string inputString)
         {   
-
             Console.WriteLine($"Parsing input: {inputString}");
 
             comboContext.ProcessInput(inputString);
@@ -51,10 +50,9 @@ namespace ComboTranslatorTekken8.Model
             {
                 Console.WriteLine($"Processing token: Type={token.Type}, Value={token.Value}");
 
-                string normalizedValue = token.Value.Trim().ToLower();
-                if (inputMap.ContainsKey(normalizedValue))
+                if (inputMap.ContainsKey(token.Value))
                 {
-                    InputCommand command = inputMap[normalizedValue];
+                    InputCommand command = inputMap[token.Value];
                     storeParsedCommands.Add(command);
                     Console.WriteLine($"Matched to InputCommand: {command}");
                 }

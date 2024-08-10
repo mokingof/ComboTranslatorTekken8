@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ComboTranslatorTekken8")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8cee56c8fd02d79106c65c5f01843fb2848e987e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4fd5695bf6062b0334dcd61fd48d70f491984fb1")]
 [assembly: System.Reflection.AssemblyProductAttribute("ComboTranslatorTekken8")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ComboTranslatorTekken8")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

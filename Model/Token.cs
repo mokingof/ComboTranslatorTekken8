@@ -7,7 +7,7 @@ namespace ComboTranslatorTekken8.Model
         SingleButtons,
         CombinedButton,
         SingleDirection,
-        HoldDirection,
+        HoldSingleDirection,
         CombinedDirection,
         HoldCombinedDirection,
         Miscellaneous,
@@ -32,7 +32,7 @@ namespace ComboTranslatorTekken8.Model
 
         public string Tostring()
         {
-            return "Type = " + Type  + "\nValue = " + Value + "\nPosition = " + Position;
+            return "Type = " + Type  + " \nValue = " + Value + " \nPosition = " + Position;
         } 
     }
 }
