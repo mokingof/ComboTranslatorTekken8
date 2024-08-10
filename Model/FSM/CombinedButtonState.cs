@@ -1,9 +1,11 @@
 ﻿namespace ComboTranslatorTekken8.Model.FSM
 {
-    public class ErrorState : IState
+    public class CombinedButtonState : IState
     {
         private readonly ComboContext context;
-        public ErrorState(ComboContext context)
+        private string accumulator = "";
+
+       public CombinedButtonState(ComboContext context)
         {
             this.context = context;
         }
@@ -14,12 +16,17 @@
 
         public Token GenerateToken()
         {
-            throw new NotImplementedException();
+            return new Token(TokenType.CombinedButton, accumulator, context.CurrentPosition);
         }
-     
+
         public IState HandleInput(string input)
         {
-            throw new NotImplementedException();
+           /* foreach (char c in input)
+            {
+                accumulator += c;   
+            }*/
+            accumulator = input;
+            return this;
         }
 
         public void Reset()

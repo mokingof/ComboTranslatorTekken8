@@ -3,7 +3,7 @@
     public interface IState
     {
        
-        IState HandleInput(char input);
+        IState HandleInput(string input);
         Token GenerateToken();
         bool CanCombineWith(char input);
         void Reset();
