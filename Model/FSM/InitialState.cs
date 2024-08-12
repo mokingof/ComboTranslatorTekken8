@@ -21,10 +21,6 @@ namespace ComboTranslatorTekken8.Model
         {
             this.context = context;
         }
-        public bool CanCombineWith(char input)
-        {
-            return false;
-        }
         public List<Token> GetTokens()
         {
             return AddToken;
@@ -42,7 +38,7 @@ namespace ComboTranslatorTekken8.Model
             }
             else if (IsDigitsOnly(input) || IsCombindButton(input))
             {
-                return new SingleButtonState(context).HandleInput(input);
+                return new ButtonState(context).HandleInput(input);
             }
             else if (SingleDirection.Contains(input))
             {
@@ -71,8 +67,6 @@ namespace ComboTranslatorTekken8.Model
             bool hasButton = input.Any(char.IsDigit);
             return hasDirection && hasButton;
         }
-
-
         bool IsDigitsOnly(string input)
         {
             foreach (char c in input)

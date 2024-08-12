@@ -1,33 +1,34 @@
-﻿namespace ComboTranslatorTekken8.Model.FSM
+﻿using System.Runtime.CompilerServices;
+
+namespace ComboTranslatorTekken8.Model.FSM
 {
-    public class SingleDirectionState : IState
+    public class CombinedDirectionState : IState
     {
         private readonly ComboContext context;
-       
-        public SingleDirectionState(ComboContext context)
+    
+
+        public CombinedDirectionState(ComboContext context)
         {
             this.context = context;
         }
-
         public string Accumulator { get; set; } = "";
-
-        public List<Token> GetTokens()
+        public bool CanCombineWith(char input)
         {
-            return context.SharedTokens;
+            throw new NotImplementedException();
         }
-        public void GenerateToken()
+
+        public Token GenerateToken()
         {
-            if (char.IsUpper(Accumulator,0))
+            if (IsUpper(Accumulator))
             {
-                context.SharedTokens.Add(new Token(TokenType.HoldSingleDirection, Accumulator, context.CurrentPosition));
-                context.CurrentPosition++;
+                return new Token(TokenType.HoldCombinedDirection, Accumulator, context.CurrentPosition);
             }
             else
             {
-                context.SharedTokens.Add(new Token(TokenType.SingleDirection, Accumulator, context.CurrentPosition));
-                context.CurrentPosition++;
+                return new Token(TokenType.CombinedDirection, Accumulator, context.CurrentPosition);
             }
         }
+
         public IState HandleInput(string input)
         {
             Accumulator = input;
@@ -44,7 +45,7 @@
         }
         public void Reset()
         {
-            Accumulator = "";
+            throw new NotImplementedException();
         }
     }
 }

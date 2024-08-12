@@ -9,13 +9,6 @@
             this.context = context;
         }
         public string Accumulator { get; set; } = "";
-        public List<Token> AddToken { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public bool CanCombineWith(char input)
-        {
-            throw new NotImplementedException();
-        }
-
         public void GenerateToken()
         {
           
@@ -26,7 +19,6 @@
         }
         public IState HandleInput(string input)
         {
-
             string buttonPart = "";
             string directionPart = "";
 
