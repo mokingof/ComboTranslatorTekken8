@@ -44,18 +44,22 @@ namespace ComboTranslatorTekken8.Model
             {
                 return new SingleDirectionState(context).HandleInput(input);
             }
-           /* else if (Miscellaneous.Contains(input))
+            else if (CombinedDirection.Contains(input))
             {
-                return new MiscellaneousState(context).HandleInput(input);
+                return new CombinedDirectionState(context).HandleInput(input);
             }
-            else if (StageInteractions.Contains(input))
-            {
-                return new StageInteractionState(context).HandleInput(input);
-            }
-            else if (Stances.Contains(input))
-            {
-                return new StancesState(context).HandleInput(input);
-            }*/
+            /* else if (Miscellaneous.Contains(input))
+             {
+                 return new MiscellaneousState(context).HandleInput(input);
+             }
+             else if (StageInteractions.Contains(input))
+             {
+                 return new StageInteractionState(context).HandleInput(input);
+             }
+             else if (Stances.Contains(input))
+             {
+                 return new StancesState(context).HandleInput(input);
+             }*/
             else
             {
                 return new ErrorState(context);

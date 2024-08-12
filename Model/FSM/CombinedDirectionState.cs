@@ -12,27 +12,32 @@ namespace ComboTranslatorTekken8.Model.FSM
             this.context = context;
         }
         public string Accumulator { get; set; } = "";
-        public bool CanCombineWith(char input)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Token GenerateToken()
+    
+        public void GenerateToken()
         {
             if (IsUpper(Accumulator))
             {
-                return new Token(TokenType.HoldCombinedDirection, Accumulator, context.CurrentPosition);
+                context.SharedTokens.Add(new Token(TokenType.HoldCombinedDirection, Accumulator, context.CurrentPosition));
+                context.CurrentPosition++;
             }
             else
             {
-                return new Token(TokenType.CombinedDirection, Accumulator, context.CurrentPosition);
+                context.SharedTokens.Add(new Token(TokenType.CombinedDirection, Accumulator, context.CurrentPosition));
+                context.CurrentPosition++;
             }
         }
-
         public IState HandleInput(string input)
         {
             Accumulator = input;
             return this;
+        }
+        public void Reset()
+        {
+            throw new NotImplementedException();
+        }
+        public List<Token> GetTokens()
+        {
+            throw new NotImplementedException();
         }
         private bool IsUpper(string input)
         {
@@ -42,10 +47,6 @@ namespace ComboTranslatorTekken8.Model.FSM
                     return false;
             }
             return true;
-        }
-        public void Reset()
-        {
-            throw new NotImplementedException();
         }
     }
 }
