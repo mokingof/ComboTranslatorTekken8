@@ -3,7 +3,7 @@
     public class SingleDirectionState : IState
     {
         private readonly ComboContext context;
-        private string accumulator = "";
+       
         public SingleDirectionState(ComboContext context)
         {
             this.context = context;
@@ -12,17 +12,23 @@
         {
             throw new NotImplementedException();
         }
-        public Token GenerateToken()
+        public string Accumulator { get; set; } = "";
+
+        public List<Token> GetTokens()
         {
-            if (IsUpper(accumulator))
+            return context.SharedTokens;
+        }
+        public void GenerateToken()
+        {
+            /*if (IsUpper(Accumulator))
             {
-                return new Token(TokenType.HoldSingleDirection, accumulator, context.CurrentPosition);
+                return new Token(TokenType.HoldSingleDirection, Accumulator, context.CurrentPosition);
 
             }
             else
             {
-                return new Token(TokenType.SingleDirection, accumulator, context.CurrentPosition);
-            }
+                return new Token(TokenType.SingleDirection, Accumulator, context.CurrentPosition);
+            }*/
         }
 
         /*    public IState HandleInput(char input)
@@ -42,7 +48,7 @@
 
         public IState HandleInput(string input)
         {
-            accumulator = input;
+            Accumulator = input;
             return this;
         }
         private bool IsUpper(string input)
@@ -56,7 +62,7 @@
         }
         public void Reset()
         {
-            accumulator = "";
+            Accumulator = "";
         }
     }
 }

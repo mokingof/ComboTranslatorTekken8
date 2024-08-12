@@ -1,4 +1,5 @@
-﻿namespace ComboTranslatorTekken8.Model.FSM
+﻿
+namespace ComboTranslatorTekken8.Model.FSM
 {
     public class ErrorState : IState
     {
@@ -7,16 +8,24 @@
         {
             this.context = context;
         }
+
+        public string Accumulator { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public bool CanCombineWith(char input)
         {
             throw new NotImplementedException();
         }
 
-        public Token GenerateToken()
+        public void GenerateToken()
+        {
+          
+        }
+
+        public List<Token> GetTokens()
         {
             throw new NotImplementedException();
         }
-     
+
         public IState HandleInput(string input)
         {
             throw new NotImplementedException();

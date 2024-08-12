@@ -3,32 +3,64 @@
     public class CombinedInput : IState
     {
         private readonly ComboContext context;
-        private string accumulator = "";
 
         public CombinedInput(ComboContext context)
         {
             this.context = context;
         }
-    
+        public string Accumulator { get; set; } = "";
+        public List<Token> AddToken { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public bool CanCombineWith(char input)
         {
             throw new NotImplementedException();
         }
 
-        public Token GenerateToken()
+        public void GenerateToken()
         {
-            throw new NotImplementedException();
+          
         }
-
+        public List<Token> GetTokens()
+        {
+            return context.SharedTokens;
+        }
         public IState HandleInput(string input)
         {
-            accumulator = input;
+
+            string buttonPart = "";
+            string directionPart = "";
+
+            foreach (char c in input)
+            {
+                if (char.IsDigit(c) || c.Equals('+'))
+                {
+                    buttonPart += c;
+                }
+                else if (char.IsLetter(c))
+                {
+                    directionPart += c;
+                }
+            }
+          /*  // Process direction part
+            if (!string.IsNullOrEmpty(directionPart))
+            {
+                IState directionState = new SingleDirectionState(context).HandleInput(directionPart);
+                context.AddToken(directionState.GenerateToken());
+            }
+            // Process button part
+            if (!string.IsNullOrEmpty(buttonPart))
+            {
+                IState buttonState = new SingleButtonState(context).HandleInput(buttonPart);
+                context.AddToken(buttonState.GenerateToken());
+            }*/
+
             return this;
         }
 
+
         public void Reset()
         {
-            throw new NotImplementedException();
+
         }
     }
 }
