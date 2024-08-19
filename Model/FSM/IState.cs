@@ -7,6 +7,6 @@
         IState HandleInput(string input);
         void Reset();
         List<Token> GetTokens();
-
+        void AddToken(Token token); 
     }
 }

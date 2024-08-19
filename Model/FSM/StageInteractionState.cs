@@ -1,29 +1,24 @@
 ﻿
 namespace ComboTranslatorTekken8.Model.FSM
 {
-    public class ErrorState : IState
+    public class StageInteractionState : IState
     {
         private readonly ComboContext context;
-        public ErrorState(ComboContext context)
+
+        public StageInteractionState(ComboContext context)
         {
             this.context = context;
-        }
-
-        public string Accumulator { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        }  
+        public string Accumulator { get; set; }
 
         public void AddToken(Token token)
         {
             throw new NotImplementedException();
         }
 
-        public bool CanCombineWith(char input)
-        {
-            throw new NotImplementedException();
-        }
-
         public void GenerateToken()
         {
-          
+            throw new NotImplementedException();
         }
 
         public List<Token> GetTokens()

@@ -48,7 +48,7 @@ namespace ComboTranslatorTekken8.Model
             {
                 return new CombinedDirectionState(context).HandleInput(input);
             }
-            /* else if (Miscellaneous.Contains(input))
+             else if (Miscellaneous.Contains(input))
              {
                  return new MiscellaneousState(context).HandleInput(input);
              }
@@ -59,7 +59,7 @@ namespace ComboTranslatorTekken8.Model
              else if (Stances.Contains(input))
              {
                  return new StancesState(context).HandleInput(input);
-             }*/
+             }
             else
             {
                 return new ErrorState(context);
@@ -71,7 +71,7 @@ namespace ComboTranslatorTekken8.Model
             bool hasButton = input.Any(char.IsDigit);
             return hasDirection && hasButton;
         }
-        bool IsDigitsOnly(string input)
+        private bool IsDigitsOnly(string input)
         {
             foreach (char c in input)
             {

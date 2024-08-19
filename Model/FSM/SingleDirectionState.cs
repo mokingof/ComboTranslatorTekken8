@@ -19,13 +19,11 @@
         {
             if (char.IsUpper(Accumulator,0))
             {
-                context.SharedTokens.Add(new Token(TokenType.HoldSingleDirection, Accumulator, context.CurrentPosition));
-                context.CurrentPosition++;
+                AddToken(new Token(TokenType.HoldSingleDirection, Accumulator, context.CurrentPosition));
             }
             else
             {
-                context.SharedTokens.Add(new Token(TokenType.SingleDirection, Accumulator, context.CurrentPosition));
-                context.CurrentPosition++;
+                AddToken(new Token(TokenType.SingleDirection, Accumulator, context.CurrentPosition));
             }
         }
         public IState HandleInput(string input)
@@ -33,14 +31,10 @@
             Accumulator = input;
             return this;
         }
-        private bool IsUpper(string input)
+        public void AddToken(Token token)
         {
-            foreach (char c in input)
-            {
-                if (!Char.IsUpper(c))
-                    return false;
-            }
-            return true;
+            context.SharedTokens.Add(token);
+            context.CurrentPosition++;
         }
         public void Reset()
         {

@@ -1,4 +1,7 @@
-﻿namespace ComboTranslatorTekken8.Model.FSM
+﻿using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ComboTranslatorTekken8.Model.FSM
 {
     public class CombinedInput : IState
     {
@@ -11,7 +14,7 @@
         public string Accumulator { get; set; } = "";
         public void GenerateToken()
         {
-          
+
         }
         public List<Token> GetTokens()
         {
@@ -19,37 +22,43 @@
         }
         public IState HandleInput(string input)
         {
-            string buttonPart = "";
-            string directionPart = "";
+            var groups = Regex.Matches(input, @"(\d+(?:\+\d+)*)|([a-zA-Z]+)")
+                             .Cast<Match>()
+                             .Select(m => m.Value);
 
-            foreach (char c in input)
+            foreach (var group in groups)
             {
-                if (char.IsDigit(c) || c.Equals('+'))
-                {
-                    buttonPart += c;
-                }
-                else if (char.IsLetter(c))
-                {
-                    directionPart += c;
-                }
+                ProcessGroup(group);
             }
-          /*  // Process direction part
-            if (!string.IsNullOrEmpty(directionPart))
-            {
-                IState directionState = new SingleDirectionState(context).HandleInput(directionPart);
-                context.AddToken(directionState.GenerateToken());
-            }
-            // Process button part
-            if (!string.IsNullOrEmpty(buttonPart))
-            {
-                IState buttonState = new SingleButtonState(context).HandleInput(buttonPart);
-                context.AddToken(buttonState.GenerateToken());
-            }*/
 
             return this;
         }
-
-
+        private void ProcessGroup(string group)
+        {
+            if (char.IsDigit(group[0]))
+            {
+                ProcessButtonInput(group);
+            }
+            else
+            {
+                ProcessDirectionInput(group);
+            }
+        }
+        private void ProcessButtonInput(string input)
+        {
+            var tokenType = input.Contains("+") ? TokenType.CombinedButton : TokenType.SingleButtons;
+            AddToken(new Token(tokenType, input, context.CurrentPosition));
+        }
+        private void ProcessDirectionInput(string input)
+        {
+            var tokenType = input.Length > 1 ? TokenType.CombinedDirection : TokenType.SingleDirection;
+            AddToken(new Token(tokenType, input, context.CurrentPosition));
+        }
+        public void AddToken(Token token)
+        {
+            context.SharedTokens.Add(token);
+            context.CurrentPosition++;
+        }
         public void Reset()
         {
 

@@ -6,14 +6,12 @@ namespace ComboTranslatorTekken8.Model.FSM
     {
         private readonly ComboContext context;
 
-
         public ButtonState(ComboContext context)
         {
             this.context = context;
         }
 
         public string Accumulator { get; set; } = "";
-
 
         public List<Token> GetTokens()
         {
@@ -23,8 +21,7 @@ namespace ComboTranslatorTekken8.Model.FSM
         {
             if (Accumulator.Contains("+"))
             {
-                context.SharedTokens.Add(new Token(TokenType.CombinedButton, Accumulator, context.CurrentPosition));
-                context.CurrentPosition++;
+                AddToken(new Token(TokenType.CombinedButton, Accumulator, context.CurrentPosition));
             }
             else
             {
@@ -34,8 +31,7 @@ namespace ComboTranslatorTekken8.Model.FSM
                     {
                         continue;
                     }
-                    context.SharedTokens.Add(new Token(TokenType.SingleButtons, Accumulator[i].ToString(), context.CurrentPosition));
-                    context.CurrentPosition++;
+                    AddToken(new Token(TokenType.SingleButtons, Accumulator[i].ToString(), context.CurrentPosition));
                 }
             }
         }
@@ -43,6 +39,11 @@ namespace ComboTranslatorTekken8.Model.FSM
         {
             Accumulator = input;
             return this;
+        }
+        public void AddToken(Token token)
+        {
+            context.SharedTokens.Add(token);
+            context.CurrentPosition++;
         }
         public void Reset()
         {
