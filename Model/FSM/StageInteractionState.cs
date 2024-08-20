@@ -13,27 +13,29 @@ namespace ComboTranslatorTekken8.Model.FSM
 
         public void AddToken(Token token)
         {
-            throw new NotImplementedException();
+            context.SharedTokens.Add(token);
+            context.CurrentPosition++;
         }
 
         public void GenerateToken()
         {
-            throw new NotImplementedException();
+            AddToken(new Token(TokenType.StageInteractions, Accumulator.ToString(), context.CurrentPosition));
         }
 
         public List<Token> GetTokens()
         {
-            throw new NotImplementedException();
+           return context.SharedTokens;
         }
 
         public IState HandleInput(string input)
         {
-            throw new NotImplementedException();
+            Accumulator = input;
+            return this;
         }
 
         public void Reset()
         {
-            throw new NotImplementedException();
+            Accumulator = "";
         }
     }
 }

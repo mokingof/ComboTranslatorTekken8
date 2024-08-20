@@ -12,7 +12,7 @@
         }
         public void ProcessInput(string input)
         {
-            string[] tokens = input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] tokens = input.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
 
             for (int i = 0; i < tokens.Length; i++)
             {

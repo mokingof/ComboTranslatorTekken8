@@ -2,11 +2,11 @@
 {
     public interface IState
     {
-        string Accumulator { get; set; }
+      //  string Accumulator { get; set; }
         void GenerateToken();
         IState HandleInput(string input);
-        void Reset();
-        List<Token> GetTokens();
-        void AddToken(Token token); 
+     //   void Reset();
+     //   List<Token> GetTokens();
+     //   void AddToken(Token token); 
     }
 }

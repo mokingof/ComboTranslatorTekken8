@@ -1,39 +1,18 @@
 ﻿
 namespace ComboTranslatorTekken8.Model.FSM
 {
-    public class StancesState : IState
+    public class StancesState : BaseState
     {
-        private readonly ComboContext context;
-        
-        public StancesState(ComboContext context)
+        public StancesState(ComboContext context) : base(context) { }
+        public override void GenerateToken()
         {
-            this.context = context;
+            AddToken(new Token(TokenType.Stances, Accumulator, context.CurrentPosition));
         }
-        public string Accumulator { get; set; }
-
-        public void AddToken(Token token)
+        public override IState HandleInput(string input)
         {
-            throw new NotImplementedException();
+            Accumulator = input;
+            return this;
         }
 
-        public void GenerateToken()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Token> GetTokens()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IState HandleInput(string input)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Reset()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

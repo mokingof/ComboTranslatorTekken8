@@ -2,21 +2,11 @@
 
 namespace ComboTranslatorTekken8.Model.FSM
 {
-    public class CombinedDirectionState : IState
+    public class CombinedDirectionState : BaseState
     {
-        private readonly ComboContext context;
-    
-
-        public CombinedDirectionState(ComboContext context)
-        {
-            this.context = context;
-        }
-        public string Accumulator { get; set; } = "";
-        public List<Token> GetTokens()
-        {
-            return context.SharedTokens;
-        }
-        public void GenerateToken()
+        public CombinedDirectionState(ComboContext context) : base(context) { }
+ 
+        public override void GenerateToken()
         {
             if (IsUpper(Accumulator))
             {
@@ -27,17 +17,12 @@ namespace ComboTranslatorTekken8.Model.FSM
                 AddToken(new Token(TokenType.CombinedDirection, Accumulator, context.CurrentPosition));
             }
         }
-        public IState HandleInput(string input)
+        public override IState HandleInput(string input)
         {
             Accumulator = input;
             return this;
         }
 
-        public void AddToken(Token token)
-        {
-            context.SharedTokens.Add(token);
-            context.CurrentPosition++;
-        }
         private bool IsUpper(string input)
         {
             foreach (char c in input)
@@ -46,10 +31,6 @@ namespace ComboTranslatorTekken8.Model.FSM
                     return false;
             }
             return true;
-        }
-        public void Reset()
-        {
-            Accumulator = "";
         }
 
     }

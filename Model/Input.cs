@@ -50,11 +50,11 @@
 
         // Stage Interactions
         [InputString("bb!"), InputString("BB!")] BalconyBreak,
-        [InputString("fbi!"), InputString("FBI!")] FloorBlast,
+        [InputString("fbl!"), InputString("FBL!")] FloorBlast,
         [InputString("fb!"), InputString("FB!")] FloorBreak,
-        [InputString("w!"), InputString("W!")] WallBlast,
+        [InputString("wbl!"), InputString("WBL!")] WallBlast,
         [InputString("wbo!"), InputString("WBO!")] WallBound,
-        [InputString("wbr!"), InputString("WBR!")] WallBreak,
+        [InputString("wb!"), InputString("WB!")] WallBreak,
 
         // Misc
         [InputString("h!"), InputString("H!")] Heat,

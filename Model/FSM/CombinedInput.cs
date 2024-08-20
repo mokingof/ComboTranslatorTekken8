@@ -3,65 +3,23 @@ using System.Text.RegularExpressions;
 
 namespace ComboTranslatorTekken8.Model.FSM
 {
-    public class CombinedInput : IState
+    public class CombinedInput : BaseState
     {
-        private readonly ComboContext context;
-
-        public CombinedInput(ComboContext context)
-        {
-            this.context = context;
-        }
-        public string Accumulator { get; set; } = "";
-        public void GenerateToken()
+        public CombinedInput(ComboContext context) : base(context) { }
+        public override void GenerateToken()
         {
 
         }
-        public List<Token> GetTokens()
+        public override IState HandleInput(string input)
         {
-            return context.SharedTokens;
-        }
-        public IState HandleInput(string input)
-        {
-            var groups = Regex.Matches(input, @"(\d+(?:\+\d+)*)|([a-zA-Z]+)")
-                             .Cast<Match>()
-                             .Select(m => m.Value);
-
-            foreach (var group in groups)
+   
+            for (int i = 0; i < input.Length; i++)
             {
-                ProcessGroup(group);
+                // TODO GO CHARACTER BY CHARACTER CHECK IF NEXT IS DIRECTION THEN ADD ASAP
+            
             }
-
+           
             return this;
-        }
-        private void ProcessGroup(string group)
-        {
-            if (char.IsDigit(group[0]))
-            {
-                ProcessButtonInput(group);
-            }
-            else
-            {
-                ProcessDirectionInput(group);
-            }
-        }
-        private void ProcessButtonInput(string input)
-        {
-            var tokenType = input.Contains("+") ? TokenType.CombinedButton : TokenType.SingleButtons;
-            AddToken(new Token(tokenType, input, context.CurrentPosition));
-        }
-        private void ProcessDirectionInput(string input)
-        {
-            var tokenType = input.Length > 1 ? TokenType.CombinedDirection : TokenType.SingleDirection;
-            AddToken(new Token(tokenType, input, context.CurrentPosition));
-        }
-        public void AddToken(Token token)
-        {
-            context.SharedTokens.Add(token);
-            context.CurrentPosition++;
-        }
-        public void Reset()
-        {
-
         }
     }
 }
