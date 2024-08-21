@@ -8,7 +8,7 @@ namespace ComboTranslatorTekken8.Model
 {
     public class InitialState : BaseState
     {
-        public InitialState(ComboContext context) : base(context) { }
+        public InitialState(ComboContext context) : base(context) {}
 
         HashSet<string> SingleButton = new HashSet<string> { "1", "2", "3", "4" };
         HashSet<string> CombinedButtons = new HashSet<string> { "1+2", "1+3", "1+4", "2+3", "2+4", "3+4", "1+2+3", "1+2+4", "1+3+4", "2+3+4", "1+2+3+4" };
@@ -24,6 +24,8 @@ namespace ComboTranslatorTekken8.Model
 
         public override IState HandleInput(string input)
         {
+            string stateType = inputClassifier.ClassifyInput(input);
+
             if (IsCombinedInput(input))
             {
                 return new CombinedInput(context).HandleInput(input);

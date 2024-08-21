@@ -3,10 +3,12 @@
     public abstract class BaseState : IState
     {
         protected readonly ComboContext context;
-
+        protected static InputClassifier inputClassifier;
+        protected static StateFactory stateFactory;
         protected BaseState(ComboContext context)
         {
             this.context = context;
+            InitializeSharedComponents();
         }
         public string Accumulator { get; set; } = "";
         public abstract void GenerateToken();
@@ -16,7 +18,17 @@
         {
             Accumulator = "";
         }
-
+        private static void InitializeSharedComponents()
+        {
+            if (inputClassifier == null)
+            {
+                inputClassifier = new InputClassifier();
+            }
+            if (stateFactory == null)
+            {
+                stateFactory = new StateFactory();
+            }
+        }
         public virtual List<Token> GetTokens()
         {
             return context.SharedTokens;
