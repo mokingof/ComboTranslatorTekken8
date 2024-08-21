@@ -1,5 +1,4 @@
-﻿
-namespace ComboTranslatorTekken8.Model.FSM
+﻿namespace ComboTranslatorTekken8.Model.FSM.MiscStates
 {
     public class StancesState : BaseState
     {

@@ -1,5 +1,8 @@
 ﻿using ComboTranslatorTekken8.Model.FSM;
-using System.Text.RegularExpressions;
+using ComboTranslatorTekken8.Model.FSM.ButtonStates;
+using ComboTranslatorTekken8.Model.FSM.DirectionStates;
+using ComboTranslatorTekken8.Model.FSM.MiscStates;
+
 
 namespace ComboTranslatorTekken8.Model
 {
@@ -9,20 +12,13 @@ namespace ComboTranslatorTekken8.Model
 
         HashSet<string> SingleButton = new HashSet<string> { "1", "2", "3", "4" };
         HashSet<string> CombinedButtons = new HashSet<string> { "1+2", "1+3", "1+4", "2+3", "2+4", "3+4", "1+2+3", "1+2+4", "1+3+4", "2+3+4", "1+2+3+4" };
-        HashSet<string> SingleDirection = new HashSet<string> { "d", "f", "u", "b", "n", "D", "F", "U", "B", "N" };
-        HashSet<string> CombinedDirection = new HashSet<string> { "uf", "ub", "df", "db", "qcf", "qcb", "hcf", "hcb", "UF", "UB", "DF", "DB", "ssl", "ssr", "swl", "swr", "ssc" };
+        HashSet<string> SingleDirection = new HashSet<string> { "d", "f", "u", "b", "n"};
+        HashSet<string> HoldSingleDirection = new HashSet<string> { "D", "F", "U", "B", "N" };
+        HashSet<string> CombinedDirection = new HashSet<string> { "uf", "ub", "df", "db", "qcf", "qcb", "hcf", "hcb", "ssl", "ssr", "swl", "swr", "ssc" };
+        HashSet<string> HoldCombinedDirection = new HashSet<string> { "UF", "UB", "DF", "DB" };
         HashSet<string> Miscellaneous = new HashSet<string> { "h!", "hs!", "hd!", "hb!", "t!", "jf", "cc", "fc", "ch", "dash", "mc", "wr", "ws", "~", "," };
         HashSet<string> StageInteractions = new HashSet<string> { "bb!", "fbl!", "fb!", "wbl!", "wbo!", "wb!" };
-        HashSet<string> Stances = new HashSet<string> { "aop", "bkp", "bok", "bt", "cd", "cfo ", "ctf", "dbt", "dck", "den", "den", "des", "dew", "dgf", "dpd", "dss", "dss", "ctf", "et_dck", "flea", "flk", "fly", "gen", "gmc", "gmh", "gs", "hae", "hbs", "hms", "hyp", "iai", "ind", "isw", "izu", "jag", "jgs", "kin", "knk", "len", "iff", "lfs", "lib", "inh", "mcr", "med", "mia", "mnt", "nss", "nwg", "pab", "prf", "rab", "rds", "rff", "rfs", "rlx", "roll", "sbt", "scr", "sen", "sit", "sne", "snk", "stb", "stc", "swa", "swy", "szn", "taw", "trt", "uns", "vac", "wra", "zen" };
-        
-        protected List<Token> tokens = new List<Token>();
-        public string Accumulator { get; set; } = "";
-        public List<Token> AddToken => tokens;
-     
-        public List<Token> GetTokens()
-        {
-            return AddToken;
-        }
+        HashSet<string> Stances = new HashSet<string> { "aop", "bkp", "bok", "bt", "cd", "cfo ", "ctf", "dbt", "dck", "den", "den", "des", "dew", "dgf", "dpd", "dss", "dss", "ctf", "et_dck", "flea", "flk", "fly", "gen", "gmc", "gmh", "gs", "hae", "hbs", "hms", "hyp", "iai", "ind", "isw", "izu", "jag", "jgs", "kin", "knk", "len", "iff", "lfs", "lib", "inh", "mcr", "med", "mia", "mnt", "nss", "nwg", "pab", "prf", "rab", "rds", "rff", "rfs", "rlx", "roll", "sbt", "scr", "sen", "sit", "sne", "snk", "stb", "stc", "swa", "swy", "szn", "taw", "trt", "uns", "vac", "wra", "zen" };      
         public override void GenerateToken() { }
 
         public override IState HandleInput(string input)
@@ -43,9 +39,17 @@ namespace ComboTranslatorTekken8.Model
             {
                 return new SingleDirectionState(context).HandleInput(input);
             }
+            else if (HoldSingleDirection.Contains(input))
+            {
+                return new HoldSingleDirectionState(context).HandleInput(input);
+            }
             else if (CombinedDirection.Contains(input))
             {
                 return new CombinedDirectionState(context).HandleInput(input);
+            }
+            else if (HoldCombinedDirection.Contains(input))
+            {
+                return new HoldCombinedDirectionState(context).HandleInput(input);
             }
             else if (Miscellaneous.Contains(input))
             {

@@ -1,5 +1,4 @@
-﻿
-namespace ComboTranslatorTekken8.Model.FSM
+﻿namespace ComboTranslatorTekken8.Model.FSM.MiscStates
 {
     public class StageInteractionState : IState
     {
@@ -8,7 +7,7 @@ namespace ComboTranslatorTekken8.Model.FSM
         public StageInteractionState(ComboContext context)
         {
             this.context = context;
-        }  
+        }
         public string Accumulator { get; set; }
 
         public void AddToken(Token token)
@@ -24,7 +23,7 @@ namespace ComboTranslatorTekken8.Model.FSM
 
         public List<Token> GetTokens()
         {
-           return context.SharedTokens;
+            return context.SharedTokens;
         }
 
         public IState HandleInput(string input)

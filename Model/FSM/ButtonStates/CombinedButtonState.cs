@@ -1,4 +1,4 @@
-﻿namespace ComboTranslatorTekken8.Model.FSM
+﻿namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
 {
     public class CombinedButtonState : BaseState
     {

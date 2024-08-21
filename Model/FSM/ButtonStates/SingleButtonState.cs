@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace ComboTranslatorTekken8.Model.FSM
+namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
 {
     public class SingleButtonState : BaseState
     {
