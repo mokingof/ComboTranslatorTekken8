@@ -11,9 +11,9 @@ namespace ComboTranslatorTekken8.Model.FSM
           
         }
 
-        public override IState HandleInput(string input)
+        public override IState HandleInput(char input)
         {
-            throw new NotImplementedException();
+            return this;
         }
 
     }

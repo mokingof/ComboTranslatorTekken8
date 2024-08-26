@@ -3,22 +3,22 @@
     public abstract class BaseState : IState
     {
         protected readonly ComboContext context;
-        protected static InputClassifier inputClassifier;
-        protected static StateFactory stateFactory;
+      //  protected static InputClassifier inputClassifier;
+      //  protected static StateFactory stateFactory;
         protected BaseState(ComboContext context)
         {
             this.context = context;
-            InitializeSharedComponents();
+          //  InitializeSharedComponents();
         }
         public string Accumulator { get; set; } = "";
         public abstract void GenerateToken();
-        public abstract IState HandleInput(string input);
+        public abstract IState HandleInput(char input);
 
         public virtual void Reset()
         {
             Accumulator = "";
         }
-        private static void InitializeSharedComponents()
+   /*     private static void InitializeSharedComponents()
         {
             if (inputClassifier == null)
             {
@@ -28,11 +28,7 @@
             {
                 stateFactory = new StateFactory();
             }
-        }
-        public virtual List<Token> GetTokens()
-        {
-            return context.SharedTokens;
-        }
+        }*/
 
         public virtual void AddToken(Token token)
         {

@@ -10,9 +10,9 @@ namespace ComboTranslatorTekken8.Model.FSM.DirectionStates
         {
             AddToken(new Token(TokenType.CombinedDirection, Accumulator, context.CurrentPosition));
         }
-        public override IState HandleInput(string input)
+        public override IState HandleInput(char input)
         {
-            Accumulator = input;
+            
             return this;
         }
     }

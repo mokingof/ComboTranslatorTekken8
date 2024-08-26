@@ -4,7 +4,7 @@
     {
       //  string Accumulator { get; set; }
         void GenerateToken();
-        IState HandleInput(string input);
+        IState HandleInput(char input);
      //   void Reset();
      //   List<Token> GetTokens();
      //   void AddToken(Token token); 

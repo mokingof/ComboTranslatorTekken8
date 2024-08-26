@@ -7,9 +7,9 @@
         {
             AddToken(new Token(TokenType.CombinedButton, Accumulator, context.CurrentPosition));
         }
-        public override IState HandleInput(string input)
+        public override IState HandleInput(char input)
         {
-            Accumulator = input;
+           
             return this;
         }
     }
