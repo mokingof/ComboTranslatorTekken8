@@ -9,17 +9,10 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
         {
             AddToken(new Token(TokenType.CombinedButton, context.Accumulator, context.CurrentPosition));
             isReadyForNextInput = false;
-            context.Accumulator = "";
+            ResetAccumulator();
         }
         public override IState HandleInput(char input)
         {
-            if (!isReadyForNextInput)
-            {
-                context.Accumulator += input;
-                isReadyForNextInput = true;
-                return this;
-            }
-
             if (input.Equals('\0'))
             {
                 if (!IsEmptyString(context.Accumulator))
@@ -28,19 +21,33 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
                 }
                 return new InitialState(context);
             }
-
-            if (char.IsDigit(input))
+            if (!isReadyForNextInput)
             {
                 context.Accumulator += input;
+                isReadyForNextInput = true;
                 return this;
             }
-
-            if (input.Equals('+'))
+            if (isReadyForNextInput)
             {
-                context.Accumulator += input;
-                return this;
+                if (input.Equals('+') && char.IsDigit(GetEndCharacter(context.Accumulator)))
+                {
+                    context.Accumulator += input;
+                    return this;
+                }
+                else if (char.IsDigit(input) && GetEndCharacter(context.Accumulator).Equals('+'))
+                {
+                    context.Accumulator += input;
+                    return this;
+                }
+                else if (char.IsDigit(GetEndCharacter(context.Accumulator)) && char.IsDigit(input))
+                {
+                    if (!IsEmptyString(context.Accumulator))
+                    {
+                        GenerateToken();
+                    }
+                    return new SingleButtonState(context).HandleInput(input);
+                }                
             }
-
             if (char.IsLetter(input))
             {
                 if (!IsEmptyString(context.Accumulator))
@@ -49,7 +56,6 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
                 }
                 return new ProcessingState(context).HandleInput(input);
             }
-
             return new ErrorState(context);
         }
     }

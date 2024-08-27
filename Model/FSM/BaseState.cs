@@ -30,6 +30,14 @@
         {
             return string.IsNullOrEmpty(input);
         }
+        public char GetEndCharacter(string input)
+        {
+            return context.Accumulator[context.Accumulator.Length - 1];
+        }
+        public void ResetAccumulator()
+        {
+            context.Accumulator = "";
+        }
         public  void AddToken(Token token)
         {
             context.SharedTokens.Add(token);
