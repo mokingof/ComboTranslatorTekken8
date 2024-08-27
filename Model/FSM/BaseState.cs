@@ -3,8 +3,9 @@
     public abstract class BaseState : IState
     {
         protected readonly ComboContext context;
-      //  protected static InputClassifier inputClassifier;
-      //  protected static StateFactory stateFactory;
+        //  protected static InputClassifier inputClassifier;
+        //  protected static StateFactory stateFactory;
+        public bool isReadyForNextInput = false;
         protected BaseState(ComboContext context)
         {
             this.context = context;

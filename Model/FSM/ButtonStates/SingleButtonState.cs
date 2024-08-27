@@ -5,7 +5,7 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
 {
     public class SingleButtonState : BaseState
     {
-        private bool isReadyForNextInput = false;
+       
         public SingleButtonState(ComboContext context) : base(context) { }
 
         public override void GenerateToken()
