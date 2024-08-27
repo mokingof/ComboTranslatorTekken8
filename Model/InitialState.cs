@@ -16,10 +16,13 @@ namespace ComboTranslatorTekken8.Model
             {
                 return new SingleButtonState(context).HandleInput(input);
             }
-            else
+            if (char.IsLetter(input))
             {
-                return new SingleDirectionState(context).HandleInput(input);
+                return new ProcessingState(context).HandleInput(input);
             }
+            return new ErrorState(context);
+            
+            
             //string type  = inputClassifier.ClassifyInput(input);    
             //IState state = stateFactory.CreateState(type,context);
             //return state.HandleInput(input);

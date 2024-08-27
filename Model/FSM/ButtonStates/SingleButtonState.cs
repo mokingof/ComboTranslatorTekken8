@@ -10,42 +10,52 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
 
         public override void GenerateToken()
         {
-            AddToken(new Token(TokenType.SingleButtons, Accumulator, context.CurrentPosition));
+            AddToken(new Token(TokenType.SingleButtons, context.Accumulator, context.CurrentPosition));
             isReadyForNextInput = false;
-            Accumulator = "";
+            context.Accumulator = "";
         }
         public override IState HandleInput(char input)
         {
             if (!isReadyForNextInput)
             {
-                // First input - accumulate and prepare for next
-                Accumulator = input.ToString();
+                context.Accumulator = input.ToString();
                 isReadyForNextInput = true;
                 return this;
             }
+            if (input.Equals('\0'))
+            {
+                if (!string.IsNullOrEmpty(context.Accumulator))
+                {
+                    GenerateToken();
+                }
+                return new InitialState(context);
+            }
             else if (isReadyForNextInput && char.IsDigit(input))
             {
-                GenerateToken();
+                if (!string.IsNullOrEmpty(context.Accumulator))
+                {
+                    GenerateToken();
+                }
                 return new SingleButtonState(context).HandleInput(input);
             }
-
-
-            // Second input - make decision
             if (input.Equals('+'))
             {
-                // Another button input, transition to CombinedButtonState
+
                 return new CombinedButtonState(context).HandleInput(input);
             }
-            else
+
+            if (char.IsLetter(input))
             {
-                // Direction input, generate button token and transition to DirectionState
-                GenerateToken();
-                return new SingleDirectionState(context).HandleInput(input);
+                if (!string.IsNullOrEmpty(context.Accumulator))
+                {
+                    GenerateToken();
+                }
+                return new ProcessingState(context).HandleInput(input);
             }
+
+
+            return new ErrorState(context);
         }
     }
-
-  
-
-    }
+}
 

@@ -8,7 +8,7 @@ namespace ComboTranslatorTekken8.Model.FSM.DirectionStates
 
         public override void GenerateToken()
         {
-            AddToken(new Token(TokenType.CombinedDirection, Accumulator, context.CurrentPosition));
+            AddToken(new Token(TokenType.CombinedDirection, context.Accumulator, context.CurrentPosition));
         }
         public override IState HandleInput(char input)
         {

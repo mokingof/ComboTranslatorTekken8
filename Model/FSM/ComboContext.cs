@@ -5,7 +5,7 @@
         private IState initialState;
         public List<Token> SharedTokens { get; private set; } = new List<Token>();
         public int CurrentPosition { get;  set; } = 0;
-
+        public string Accumulator { get; set; } = "";
         public ComboContext()
         {
             initialState = new InitialState(this);

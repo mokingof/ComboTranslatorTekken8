@@ -10,14 +10,10 @@
             this.context = context;
           //  InitializeSharedComponents();
         }
-        public string Accumulator { get; set; } = "";
+      
         public abstract void GenerateToken();
         public abstract IState HandleInput(char input);
 
-        public virtual void Reset()
-        {
-            Accumulator = "";
-        }
    /*     private static void InitializeSharedComponents()
         {
             if (inputClassifier == null)
