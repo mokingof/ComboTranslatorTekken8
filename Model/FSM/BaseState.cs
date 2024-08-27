@@ -2,13 +2,13 @@
 {
     public abstract class BaseState : IState
     {
-        protected readonly ComboContext context;
+        protected readonly ComboContext Context;
         //  protected static InputClassifier inputClassifier;
         //  protected static StateFactory stateFactory;
-        public bool isReadyForNextInput = false;
+        public bool IsReadyForNextInput = false;
         protected BaseState(ComboContext context)
         {
-            this.context = context;
+            this.Context = context;
           //  InitializeSharedComponents();
         }
       
@@ -32,16 +32,16 @@
         }
         public char GetEndCharacter(string input)
         {
-            return context.Accumulator[context.Accumulator.Length - 1];
+            return Context.Accumulator[Context.Accumulator.Length - 1];
         }
         public void ResetAccumulator()
         {
-            context.Accumulator = "";
+            Context.Accumulator = "";
         }
         public  void AddToken(Token token)
         {
-            context.SharedTokens.Add(token);
-            context.CurrentPosition++;
+            Context.SharedTokens.Add(token);
+            Context.CurrentPosition++;
         }
     }
 }

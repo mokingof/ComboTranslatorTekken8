@@ -7,56 +7,56 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
         public CombinedButtonState(ComboContext context) : base(context) { }
         public override void GenerateToken()
         {
-            AddToken(new Token(TokenType.CombinedButton, context.Accumulator, context.CurrentPosition));
-            isReadyForNextInput = false;
+            AddToken(new Token(TokenType.CombinedButton, Context.Accumulator, Context.CurrentPosition));
+            IsReadyForNextInput = false;
             ResetAccumulator();
         }
         public override IState HandleInput(char input)
         {
             if (input.Equals('\0'))
             {
-                if (!IsEmptyString(context.Accumulator))
+                if (!IsEmptyString(Context.Accumulator))
                 {
                     GenerateToken();
                 }
-                return new InitialState(context);
+                return new InitialState(Context);
             }
-            if (!isReadyForNextInput)
+            if (!IsReadyForNextInput)
             {
-                context.Accumulator += input;
-                isReadyForNextInput = true;
+                Context.Accumulator += input;
+                IsReadyForNextInput = true;
                 return this;
             }
-            if (isReadyForNextInput)
+            if (IsReadyForNextInput)
             {
-                if (input.Equals('+') && char.IsDigit(GetEndCharacter(context.Accumulator)))
+                if (input.Equals('+') && char.IsDigit(GetEndCharacter(Context.Accumulator)))
                 {
-                    context.Accumulator += input;
+                    Context.Accumulator += input;
                     return this;
                 }
-                else if (char.IsDigit(input) && GetEndCharacter(context.Accumulator).Equals('+'))
+                else if (char.IsDigit(input) && GetEndCharacter(Context.Accumulator).Equals('+'))
                 {
-                    context.Accumulator += input;
+                    Context.Accumulator += input;
                     return this;
                 }
-                else if (char.IsDigit(GetEndCharacter(context.Accumulator)) && char.IsDigit(input))
+                else if (char.IsDigit(GetEndCharacter(Context.Accumulator)) && char.IsDigit(input))
                 {
-                    if (!IsEmptyString(context.Accumulator))
+                    if (!IsEmptyString(Context.Accumulator))
                     {
                         GenerateToken();
                     }
-                    return new SingleButtonState(context).HandleInput(input);
+                    return new SingleButtonState(Context).HandleInput(input);
                 }                
             }
             if (char.IsLetter(input))
             {
-                if (!IsEmptyString(context.Accumulator))
+                if (!IsEmptyString(Context.Accumulator))
                 {
                     GenerateToken();
                 }
-                return new ProcessingState(context).HandleInput(input);
+                return new InitialState(Context).HandleInput(input);
             }
-            return new ErrorState(context);
+            return new ErrorState(Context);
         }
     }
     

@@ -2,13 +2,13 @@
 {
     public class ComboContext
     {
-        private IState initialState;
+        private IState _initialState;
         public List<Token> SharedTokens { get; private set; } = new List<Token>();
         public int CurrentPosition { get;  set; } = 0;
         public string Accumulator { get; set; } = "";
         public ComboContext()
         {
-            initialState = new InitialState(this);
+            _initialState = new InitialState(this);
         }
         public void ProcessInput(string input)
         {
@@ -29,7 +29,7 @@
 
             foreach(char c in input)
             {
-                initialState = initialState.HandleInput(c);
+                _initialState = _initialState.HandleInput(c);
             }
             FinalizeProcessing();
         }
@@ -38,7 +38,7 @@
         {
             // This method can be used to generate any pending tokens
             // or perform any cleanup operations
-            initialState.HandleInput('\0'); // Send a null character to signify end of input
+            _initialState.HandleInput('\0'); // Send a null character to signify end of input
         }
 
         public List<Token> GetTokens()

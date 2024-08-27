@@ -1,6 +1,7 @@
 ﻿using ComboTranslatorTekken8.Model.FSM;
 using ComboTranslatorTekken8.Model.FSM.ButtonStates;
 using ComboTranslatorTekken8.Model.FSM.DirectionStates;
+using System.Text.RegularExpressions;
 
 
 
@@ -8,19 +9,24 @@ namespace ComboTranslatorTekken8.Model
 {
     public class InitialState : BaseState
     {
+        private static readonly Regex SingleDirectionPattern = new Regex(@"^[dfub]$");
         public InitialState(ComboContext context) : base(context) { }
         public override void GenerateToken() { }
         public override IState HandleInput(char input)
         {
             if (char.IsDigit(input))
             {
-                return new SingleButtonState(context).HandleInput(input);
+                return new SingleButtonState(Context).HandleInput(input);
             }
-            if (char.IsLetter(input))
+            if (SingleDirectionPattern.IsMatch(input.ToString()))
             {
-                return new ProcessingState(context).HandleInput(input);
+                return new SingleDirectionState(Context).HandleInput(input);
             }
-            return new ErrorState(context);
+            else
+            {
+                return new ProcessingState(Context).HandleInput(input);
+            }
+         
             
             
             //string type  = inputClassifier.ClassifyInput(input);    

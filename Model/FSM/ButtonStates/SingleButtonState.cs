@@ -10,52 +10,50 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
 
         public override void GenerateToken()
         {
-            AddToken(new Token(TokenType.SingleButtons, context.Accumulator, context.CurrentPosition));
-            isReadyForNextInput = false;
+            AddToken(new Token(TokenType.SingleButtons, Context.Accumulator, Context.CurrentPosition));
+            IsReadyForNextInput = false;
             ResetAccumulator();
         }
         public override IState HandleInput(char input)
         {
-            if (!isReadyForNextInput)
+            if (!IsReadyForNextInput)
             {
-                context.Accumulator = input.ToString();
-                isReadyForNextInput = true;
+                Context.Accumulator += input.ToString();
+                IsReadyForNextInput = true;
                 return this;
             }
             if (input.Equals('\0'))
             {
-                if (!IsEmptyString(context.Accumulator))
+                if (!IsEmptyString(Context.Accumulator))
                 {
                     GenerateToken();
                 }
-                return new InitialState(context);
+                return new InitialState(Context);
             }
-            else if (isReadyForNextInput && char.IsDigit(input))
+            else if (IsReadyForNextInput && char.IsDigit(input))
             {
-                if (!IsEmptyString(context.Accumulator))
+                if (!IsEmptyString(Context.Accumulator))
                 {
                     GenerateToken();
                 }
-                return new SingleButtonState(context).HandleInput(input);
+                return new SingleButtonState(Context).HandleInput(input);
             }
             if (input.Equals('+'))
             {
 
-                return new CombinedButtonState(context).HandleInput(input);
+                return new CombinedButtonState(Context).HandleInput(input);
             }
-
-
             if (char.IsLetter(input))
             {
-                if (!IsEmptyString(context.Accumulator))
+                if (!IsEmptyString(Context.Accumulator))
                 {
                     GenerateToken();
                 }
-                return new ProcessingState(context).HandleInput(input);
+                return new InitialState(Context).HandleInput(input);
             }
 
 
-            return new ErrorState(context);
+            return new ErrorState(Context);
         }
     }
 }
