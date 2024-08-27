@@ -25,8 +25,11 @@
                 stateFactory = new StateFactory();
             }
         }*/
-
-        public virtual void AddToken(Token token)
+        public bool IsEmptyString(string input)
+        {
+            return string.IsNullOrEmpty(input);
+        }
+        public  void AddToken(Token token)
         {
             context.SharedTokens.Add(token);
             context.CurrentPosition++;

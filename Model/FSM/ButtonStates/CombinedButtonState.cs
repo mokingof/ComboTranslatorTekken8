@@ -24,7 +24,7 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
 
             if (input.Equals('\0'))
             {
-                if (!string.IsNullOrEmpty(context.Accumulator))
+                if (!IsEmptyString(context.Accumulator))
                 {
                     GenerateToken();
                 }
@@ -45,7 +45,7 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
 
             if (char.IsLetter(input))
             {
-                if (!string.IsNullOrEmpty(context.Accumulator))
+                if (!IsEmptyString(context.Accumulator))
                 {
                     GenerateToken();
                 }
