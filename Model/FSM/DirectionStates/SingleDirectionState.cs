@@ -5,8 +5,8 @@ namespace ComboTranslatorTekken8.Model.FSM.DirectionStates
 {
     public class SingleDirectionState : BaseState
     {
-        private static readonly Regex CombinedDirectionPattern = new Regex(@"^[du][fb]$");
-
+        private static readonly Regex CombinedDirectionPattern = new Regex(@"^[dfub]|[DFUB]$");
+        private static readonly Regex SingleDirectionPattern = new Regex(@"^[dfub]$");
         public SingleDirectionState(ComboContext context) : base(context) { }
 
         public override void GenerateToken()
@@ -40,22 +40,25 @@ namespace ComboTranslatorTekken8.Model.FSM.DirectionStates
             }
             if (IsReadyForNextInput)
             {
+                if (SingleDirectionPattern.IsMatch(Context.Accumulator) && SingleDirectionPattern.IsMatch(input.ToString()))
+                {
+                    GenerateToken();
+                    return new SingleDirectionState(Context).HandleInput(input);
+                }
+                if (SingleDirectionPattern.IsMatch(Context.Accumulator) && !SingleDirectionPattern.IsMatch(input.ToString()))
+                {
+                    GenerateToken();
+                    return new InitialState(Context).HandleInput(input);
+                }
+
                 string first = Context.Accumulator;    
                 string second =input.ToString();
                 string total = first + second;
                 if (CombinedDirectionPattern.IsMatch(total))
                 {
                     return new CombinedDirectionState(Context).HandleInput(input);
-                }
-                else if (!CombinedDirectionPattern.IsMatch(total))
-                {
-                    GenerateToken();
-                    return new InitialState(Context).HandleInput(input);
-                }
-                
+                }                
             }
-    
-
             return new ErrorState(Context);
         }
 

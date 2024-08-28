@@ -5,7 +5,7 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
 {
     public class SingleButtonState : BaseState
     {
-        
+
         public SingleButtonState(ComboContext context) : base(context) { }
 
         public override void GenerateToken()
@@ -32,15 +32,11 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
             }
             else if (IsReadyForNextInput && char.IsDigit(input))
             {
-                if (!IsEmptyString(Context.Accumulator))
-                {
-                    GenerateToken();
-                }
+                GenerateToken();
                 return new SingleButtonState(Context).HandleInput(input);
             }
             if (input.Equals('+'))
             {
-
                 return new CombinedButtonState(Context).HandleInput(input);
             }
             if (char.IsLetter(input))

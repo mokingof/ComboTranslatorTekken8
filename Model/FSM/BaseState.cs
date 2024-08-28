@@ -34,6 +34,8 @@
         {
             return Context.Accumulator[Context.Accumulator.Length - 1];
         }
+
+
         public void ResetAccumulator()
         {
             Context.Accumulator = "";

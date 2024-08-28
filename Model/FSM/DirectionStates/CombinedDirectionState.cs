@@ -1,16 +1,25 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 namespace ComboTranslatorTekken8.Model.FSM.DirectionStates
 {
     public class CombinedDirectionState : BaseState
     {
         public CombinedDirectionState(ComboContext context) : base(context) { }
+        private static readonly Regex CombinedDirectionPattern = new Regex(@"^[dfub]|[DFUB]$");
 
         public override void GenerateToken()
         {
-            AddToken(new Token(TokenType.CombinedDirection, Context.Accumulator, Context.CurrentPosition));
+            if (char.IsUpper(Context.Accumulator.ElementAt(0)))
+            {
+                AddToken(new Token(TokenType.HoldCombinedDirection, Context.Accumulator, Context.CurrentPosition));
+            }
+            else
+            {
+                AddToken(new Token(TokenType.CombinedDirection, Context.Accumulator, Context.CurrentPosition));
+            }
             IsReadyForNextInput = false;
-            ResetAccumulator(); 
+            ResetAccumulator();
         }
         public override IState HandleInput(char input)
         {
@@ -23,10 +32,14 @@ namespace ComboTranslatorTekken8.Model.FSM.DirectionStates
 
             if (IsReadyForNextInput)
             {
-                if (Context.Accumulator.Equals("df"))
+                if (CombinedDirectionPattern.IsMatch(Context.Accumulator))
                 {
                     GenerateToken();
-                    return new InitialState(Context);
+                    return new InitialState(Context).HandleInput(input);
+                }
+                else if (!CombinedDirectionPattern.IsMatch(Context.Accumulator))
+                {
+                    return new InitialState(Context).HandleInput(input);
                 }
             }
 
