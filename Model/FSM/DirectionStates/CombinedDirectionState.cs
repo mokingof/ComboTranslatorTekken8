@@ -6,8 +6,6 @@ namespace ComboTranslatorTekken8.Model.FSM.DirectionStates
     public class CombinedDirectionState : BaseState
     {
         public CombinedDirectionState(ComboContext context) : base(context) { }
-        private static readonly Regex CombinedDirectionPattern = new Regex(@"^[dfub]|[DFUB]$");
-
         public override void GenerateToken()
         {
             if (char.IsUpper(Context.Accumulator.ElementAt(0)))
@@ -23,13 +21,16 @@ namespace ComboTranslatorTekken8.Model.FSM.DirectionStates
         }
         public override IState HandleInput(char input)
         {
-            if (!IsReadyForNextInput)
+
+            if (HandleInitialInput(input))
             {
-                Context.Accumulator += input.ToString();
-                IsReadyForNextInput = true;
                 return this;
             }
 
+            if (HandleNullOrTerminator(input))
+            {
+                return new InitialState(Context);
+            }
             if (IsReadyForNextInput)
             {
                 if (CombinedDirectionPattern.IsMatch(Context.Accumulator))

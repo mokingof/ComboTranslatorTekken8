@@ -13,19 +13,15 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
         }
         public override IState HandleInput(char input)
         {
-            if (input.Equals('\0'))
+
+            if (HandleInitialInput(input))
             {
-                if (!IsEmptyString(Context.Accumulator))
-                {
-                    GenerateToken();
-                }
-                return new InitialState(Context);
-            }
-            if (!IsReadyForNextInput)
-            {
-                Context.Accumulator += input;
-                IsReadyForNextInput = true;
                 return this;
+            }
+
+            if (HandleNullOrTerminator(input))
+            {
+                return new InitialState(Context);
             }
             if (IsReadyForNextInput)
             {

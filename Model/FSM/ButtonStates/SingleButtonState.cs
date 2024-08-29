@@ -16,29 +16,25 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
         }
         public override IState HandleInput(char input)
         {
-            if (!IsReadyForNextInput)
+            if (HandleInitialInput(input))
             {
-                Context.Accumulator += input.ToString();
-                IsReadyForNextInput = true;
                 return this;
             }
-            if (input.Equals('\0'))
+           else if (HandleNullOrTerminator(input))
             {
-                if (!IsEmptyString(Context.Accumulator))
-                {
-                    GenerateToken();
-                }
                 return new InitialState(Context);
             }
-            else if (IsReadyForNextInput && char.IsDigit(input))
+            
+            if (IsReadyForNextInput && char.IsDigit(input))
             {
                 GenerateToken();
                 return new SingleButtonState(Context).HandleInput(input);
             }
-            if (input.Equals('+'))
+            else if (input.Equals('+'))
             {
                 return new CombinedButtonState(Context).HandleInput(input);
             }
+           
             if (char.IsLetter(input))
             {
                 if (!IsEmptyString(Context.Accumulator))
@@ -47,7 +43,6 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
                 }
                 return new InitialState(Context).HandleInput(input);
             }
-
 
             return new ErrorState(Context);
         }

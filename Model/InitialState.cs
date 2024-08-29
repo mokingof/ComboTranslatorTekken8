@@ -9,7 +9,6 @@ namespace ComboTranslatorTekken8.Model
 {
     public class InitialState : BaseState
     {
-        private static readonly Regex SingleDirectionPattern = new Regex(@"^[dfub]|[DFUB]$");
         public InitialState(ComboContext context) : base(context) { }
         public override void GenerateToken() { }
         public override IState HandleInput(char input)
