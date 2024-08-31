@@ -1,13 +1,10 @@
 ﻿namespace ComboTranslatorTekken8.Model.FSM.DirectionStates
 {
-    public class SpecialDirectionState : BaseState
+    public class QuarterCircleDirectionState : BaseState
     {
-        public SpecialDirectionState(ComboContext context) : base(context) { }
+        public QuarterCircleDirectionState(ComboContext context) : base(context) { }
 
-        public override void GenerateToken()
-        {
-           
-        }
+        public override void GenerateToken(){ }
         public override IState HandleInput(char input)
         {
             if (Context.Accumulator.Equals("qcf"))

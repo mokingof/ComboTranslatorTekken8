@@ -44,6 +44,11 @@ namespace ComboTranslatorTekken8.Model.FSM.DirectionStates
                     GenerateToken();
                     return new SingleDirectionState(Context).HandleInput(input);
                 }
+                else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && char.IsDigit(input))
+                {
+                    GenerateToken();
+                    return new SingleButtonState(Context).HandleInput(input);
+                }
                 else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && !SingleDirectionPattern.IsMatch(input.ToString()))
                 {
                     return new ProcessingState(Context).HandleInput(input);

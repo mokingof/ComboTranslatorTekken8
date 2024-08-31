@@ -1,16 +1,14 @@
 ﻿using ComboTranslatorTekken8.Model.FSM;
 using ComboTranslatorTekken8.Model.FSM.ButtonStates;
 using ComboTranslatorTekken8.Model.FSM.DirectionStates;
+using ComboTranslatorTekken8.Model.FSM.SpecialStates;
 using System.Text.RegularExpressions;
 
 namespace ComboTranslatorTekken8.Model
 {
     public class ProcessingState : BaseState
     {
-
-       
-        private static readonly Regex HalfCirclePattern = new Regex(@"^hc[fb]$");
-        private static readonly Regex SideStepPattern = new Regex(@"^ss[lr]|sw[lr]$");
+   
         public ProcessingState(ComboContext context) : base(context) { }
 
         public override void GenerateToken()
@@ -32,7 +30,11 @@ namespace ComboTranslatorTekken8.Model
 
             if (QuarterCirclePattern.IsMatch(Context.Accumulator))
             {
-                return new SpecialDirectionState(Context);
+                return new QuarterCircleDirectionState(Context);
+            }
+            else if (SideStepPattern.IsMatch(Context.Accumulator))
+            {
+                return new SideStepDirectionState(Context);
             }
 
            

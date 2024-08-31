@@ -13,9 +13,6 @@ namespace ComboTranslatorTekken8.Model
         Miscellaneous,
         StageInteractions,
         Stances,
-        QuarterCircle,
-        HalfCircle,
-        SideStep
     }
 
     public class Token 
