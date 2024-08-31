@@ -21,13 +21,11 @@ namespace ComboTranslatorTekken8.Model.FSM.DirectionStates
         }
         public override IState HandleInput(char input)
         {
-
             if (HandleInitialInput(input))
             {
                 return this;
             }
-
-            if (HandleNullOrTerminator(input))
+           else if (HandleNullOrTerminator(input))
             {
                 return new InitialState(Context);
             }
@@ -43,9 +41,7 @@ namespace ComboTranslatorTekken8.Model.FSM.DirectionStates
                     return new InitialState(Context).HandleInput(input);
                 }
             }
-
             return new ErrorState(Context);
-
         }
     }
 }

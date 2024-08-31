@@ -37,11 +37,13 @@
         [InputString("U/B"), InputString("UB")] HoldUpBack,
         [InputString("D/F"), InputString("DF")] HoldDownForward,
         [InputString("D/B"), InputString("DB")] HoldDownBack,
+       
+        // Special direction
         [InputString("qcf"), InputString("QCF")] QuarterCircleForward,
         [InputString("qcb"), InputString("QCB")] QuarterCircleBack,
-        [InputString("hcf"), InputString("HCF")] HalfCircleForward,
-        [InputString("hcb"), InputString("HCB")] HalfCircleBack,
-       // [InputString("SS")] SideStep,
+        //[InputString("hcf"), InputString("HCF")] HalfCircleForward,
+        //[InputString("hcb"), InputString("HCB")] HalfCircleBack,
+        
         [InputString("ssl"), InputString("SSL")] SideStepLeft,
         [InputString("ssr"), InputString("SSR")] SideStepRight,
         [InputString("swl"), InputString("SWL")] SideWalkLeft,

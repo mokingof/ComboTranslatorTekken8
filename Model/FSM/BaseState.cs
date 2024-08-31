@@ -10,6 +10,7 @@ namespace ComboTranslatorTekken8.Model.FSM
         public bool IsReadyForNextInput = false;
         public static readonly Regex CombinedDirectionPattern = new Regex(@"^(df|db|uf|ub)$", RegexOptions.IgnoreCase);
         public static readonly Regex SingleDirectionPattern = new Regex(@"^[dfub]$", RegexOptions.IgnoreCase);
+        public static readonly Regex QuarterCirclePattern = new Regex(@"^qc[fb]$", RegexOptions.IgnoreCase);
         protected BaseState(ComboContext context)
         {
             this.Context = context;

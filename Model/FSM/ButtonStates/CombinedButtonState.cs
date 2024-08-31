@@ -13,16 +13,15 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
         }
         public override IState HandleInput(char input)
         {
-
             if (HandleInitialInput(input))
             {
                 return this;
             }
-
-            if (HandleNullOrTerminator(input))
+           else if (HandleNullOrTerminator(input))
             {
                 return new InitialState(Context);
             }
+           
             if (IsReadyForNextInput)
             {
                 if (input.Equals('+') && char.IsDigit(GetEndCharacter(Context.Accumulator)))
