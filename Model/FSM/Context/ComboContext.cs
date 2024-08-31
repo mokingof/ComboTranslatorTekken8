@@ -1,10 +1,12 @@
-﻿namespace ComboTranslatorTekken8.Model.FSM
+﻿using ComboTranslatorTekken8.Model.FSM.CoreStates;
+using ComboTranslatorTekken8.Model.FSM.Interface;
+namespace ComboTranslatorTekken8.Model.FSM.Context
 {
     public class ComboContext
     {
         private IState _initialState;
         public List<Token> SharedTokens { get; private set; } = new List<Token>();
-        public int CurrentPosition { get;  set; } = 0;
+        public int CurrentPosition { get; set; } = 0;
         public string Accumulator { get; set; } = "";
         public ComboContext()
         {
@@ -12,22 +14,22 @@
         }
         public void ProcessInput(string input)
         {
-         /*   string[] tokens = input.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+            /*   string[] tokens = input.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
 
-            for (int i = 0; i < tokens.Length; i++)
-            {
-                initialState = initialState.HandleInput(tokens[i]);
-                initialState.GenerateToken();
-                if (initialState is ErrorState)
-                {
-                    // Handle error state
-                    Console.WriteLine($"Error processing token: {tokens[i]}");
-                    break;
-                }
-               
-            }*/
+               for (int i = 0; i < tokens.Length; i++)
+               {
+                   initialState = initialState.HandleInput(tokens[i]);
+                   initialState.GenerateToken();
+                   if (initialState is ErrorState)
+                   {
+                       // Handle error state
+                       Console.WriteLine($"Error processing token: {tokens[i]}");
+                       break;
+                   }
 
-            foreach(char c in input)
+               }*/
+
+            foreach (char c in input)
             {
                 _initialState = _initialState.HandleInput(c);
             }
@@ -46,4 +48,4 @@
             return SharedTokens;
         }
     }
-} 
+}

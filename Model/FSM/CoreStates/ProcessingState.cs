@@ -1,14 +1,14 @@
-﻿using ComboTranslatorTekken8.Model.FSM;
-using ComboTranslatorTekken8.Model.FSM.ButtonStates;
+﻿using ComboTranslatorTekken8.Model.FSM.Context;
 using ComboTranslatorTekken8.Model.FSM.DirectionStates;
+using ComboTranslatorTekken8.Model.FSM.Interface;
+using ComboTranslatorTekken8.Model.FSM.MiscStates;
 using ComboTranslatorTekken8.Model.FSM.SpecialStates;
-using System.Text.RegularExpressions;
 
-namespace ComboTranslatorTekken8.Model
+namespace ComboTranslatorTekken8.Model.FSM.CoreStates
 {
     public class ProcessingState : BaseState
     {
-   
+
         public ProcessingState(ComboContext context) : base(context) { }
 
         public override void GenerateToken()
@@ -21,11 +21,9 @@ namespace ComboTranslatorTekken8.Model
             //df db uf ub
             //qcf qcb 
             //ssl ssr swl swr ssc
+            //bb! b1
 
-            if (input.Equals('\0'))
-            {
-                return new InitialState(Context);
-            }
+
             Context.Accumulator += input.ToString();
 
             if (QuarterCirclePattern.IsMatch(Context.Accumulator))
@@ -36,8 +34,12 @@ namespace ComboTranslatorTekken8.Model
             {
                 return new SideStepDirectionState(Context);
             }
+            else if (StageInteraction.IsMatch(Context.Accumulator))
+            {
+                return new StageInteractionState(Context);
+            }
 
-           
+
             return this;
 
         }

@@ -1,6 +1,10 @@
-﻿using ComboTranslatorTekken8.Model.FSM.DirectionStates;
+﻿using ComboTranslatorTekken8.Model.FSM.ButtonStates;
+using ComboTranslatorTekken8.Model.FSM.Context;
+using ComboTranslatorTekken8.Model.FSM.CoreStates;
+using ComboTranslatorTekken8.Model.FSM.DirectionStates;
+using ComboTranslatorTekken8.Model.FSM.Interface;
 
-namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
+namespace ComboTranslatorTekken8.Model.FSM.InputStates.ButtonStates
 {
     public class CombinedButtonState : BaseState
     {
@@ -17,11 +21,11 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
             {
                 return this;
             }
-           else if (HandleNullOrTerminator(input))
+            else if (HandleNullOrTerminator(input))
             {
                 return new InitialState(Context);
             }
-           
+
             if (IsReadyForNextInput)
             {
                 if (input.Equals('+') && char.IsDigit(GetEndCharacter(Context.Accumulator)))
@@ -41,7 +45,7 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
                         GenerateToken();
                     }
                     return new SingleButtonState(Context).HandleInput(input);
-                }                
+                }
             }
             if (char.IsLetter(input))
             {
@@ -54,5 +58,5 @@ namespace ComboTranslatorTekken8.Model.FSM.ButtonStates
             return new ErrorState(Context);
         }
     }
-    
+
 }

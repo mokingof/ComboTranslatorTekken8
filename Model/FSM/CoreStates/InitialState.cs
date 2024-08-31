@@ -1,11 +1,12 @@
-﻿using ComboTranslatorTekken8.Model.FSM;
-using ComboTranslatorTekken8.Model.FSM.ButtonStates;
+﻿using ComboTranslatorTekken8.Model.FSM.ButtonStates;
+using ComboTranslatorTekken8.Model.FSM.Context;
 using ComboTranslatorTekken8.Model.FSM.DirectionStates;
+using ComboTranslatorTekken8.Model.FSM.Interface;
 using System.Text.RegularExpressions;
 
 
 
-namespace ComboTranslatorTekken8.Model
+namespace ComboTranslatorTekken8.Model.FSM.CoreStates
 {
     public class InitialState : BaseState
     {
@@ -25,13 +26,13 @@ namespace ComboTranslatorTekken8.Model
             {
                 return new ProcessingState(Context).HandleInput(input);
             }
-         
-            
-            
+
+
+
             //string type  = inputClassifier.ClassifyInput(input);    
             //IState state = stateFactory.CreateState(type,context);
             //return state.HandleInput(input);
-           
+
         }
     }
 }

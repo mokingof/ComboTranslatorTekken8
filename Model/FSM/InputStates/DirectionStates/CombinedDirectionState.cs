@@ -1,7 +1,8 @@
-﻿using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
+﻿using ComboTranslatorTekken8.Model.FSM.Context;
+using ComboTranslatorTekken8.Model.FSM.Interface;
+using ComboTranslatorTekken8.Model.FSM.CoreStates;
 
-namespace ComboTranslatorTekken8.Model.FSM.DirectionStates
+namespace ComboTranslatorTekken8.Model.FSM.InputStates.DirectionStates
 {
     public class CombinedDirectionState : BaseState
     {
@@ -25,7 +26,7 @@ namespace ComboTranslatorTekken8.Model.FSM.DirectionStates
             {
                 return this;
             }
-           else if (HandleNullOrTerminator(input))
+            else if (HandleNullOrTerminator(input))
             {
                 return new InitialState(Context);
             }

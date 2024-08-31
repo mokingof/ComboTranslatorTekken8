@@ -1,6 +1,6 @@
 ﻿using static System.Net.Mime.MediaTypeNames;
 
-namespace ComboTranslatorTekken8.Model
+namespace ComboTranslatorTekken8.Model.Utilities
 {
     public class CommandImageMapping
     {
@@ -153,7 +153,7 @@ namespace ComboTranslatorTekken8.Model
             commandImages.Add(InputCommand.RFF, "Images/Stances/rff.png");
             commandImages.Add(InputCommand.RFS, "Images/Stances/rfs.png");
             commandImages.Add(InputCommand.RLX, "Images/Stances/rlx.png");
-            commandImages.Add(InputCommand.ROLL,"Images/Stances/roll.png");
+            commandImages.Add(InputCommand.ROLL, "Images/Stances/roll.png");
             commandImages.Add(InputCommand.SBT, "Images/Stances/sbt.png");
             commandImages.Add(InputCommand.SCR, "Images/Stances/scr.png");
             commandImages.Add(InputCommand.SEN, "Images/Stances/sen.png");

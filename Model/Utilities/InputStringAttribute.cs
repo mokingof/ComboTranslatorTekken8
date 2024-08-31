@@ -1,4 +1,4 @@
-﻿namespace ComboTranslatorTekken8.Model
+﻿namespace ComboTranslatorTekken8.Model.Utilities
 {
 
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]

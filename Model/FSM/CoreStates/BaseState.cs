@@ -1,6 +1,8 @@
 ﻿using System.Text.RegularExpressions;
+using ComboTranslatorTekken8.Model.FSM.Context;
+using ComboTranslatorTekken8.Model.FSM.Interface;
 
-namespace ComboTranslatorTekken8.Model.FSM
+namespace ComboTranslatorTekken8.Model.FSM.CoreStates
 {
     public abstract class BaseState : IState
     {
@@ -12,26 +14,28 @@ namespace ComboTranslatorTekken8.Model.FSM
         public static readonly Regex SingleDirectionPattern = new Regex(@"^[dfub]$", RegexOptions.IgnoreCase);
         public static readonly Regex QuarterCirclePattern = new Regex(@"^qc[fb]$", RegexOptions.IgnoreCase);
         public static readonly Regex SideStepPattern = new Regex(@"^ss[lr]|sw[lr]$", RegexOptions.IgnoreCase);
+        public static readonly Regex StageInteraction = new Regex(@"^(bb!|fbl!|wbl!|wbo!|wb!)$", RegexOptions.IgnoreCase);
+
         protected BaseState(ComboContext context)
         {
-            this.Context = context;
-          //  InitializeSharedComponents();
+            Context = context;
+            //  InitializeSharedComponents();
         }
-      
+
         public abstract void GenerateToken();
         public abstract IState HandleInput(char input);
 
-   /*     private static void InitializeSharedComponents()
-        {
-            if (inputClassifier == null)
-            {
-                inputClassifier = new InputClassifier();
-            }
-            if (stateFactory == null)
-            {
-                stateFactory = new StateFactory();
-            }
-        }*/   
+        /*     private static void InitializeSharedComponents()
+             {
+                 if (inputClassifier == null)
+                 {
+                     inputClassifier = new InputClassifier();
+                 }
+                 if (stateFactory == null)
+                 {
+                     stateFactory = new StateFactory();
+                 }
+             }*/
         protected bool HandleInitialInput(char input)
         {
             if (!IsReadyForNextInput)
@@ -54,7 +58,7 @@ namespace ComboTranslatorTekken8.Model.FSM
             }
             return false;
         }
-        public  void AddToken(Token token)
+        public void AddToken(Token token)
         {
             Context.SharedTokens.Add(token);
             Context.CurrentPosition++;

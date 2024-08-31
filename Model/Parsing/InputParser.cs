@@ -1,10 +1,11 @@
-﻿using ComboTranslatorTekken8.Model.FSM;
+﻿using ComboTranslatorTekken8.Model.FSM.Context;
+using ComboTranslatorTekken8.Model.Utilities;
 using ComboTranslatorTekken8.Pages.Shared;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace ComboTranslatorTekken8.Model
+namespace ComboTranslatorTekken8.Model.Parsing
 {
     public class InputParser
     {
@@ -37,7 +38,7 @@ namespace ComboTranslatorTekken8.Model
 
         }
         public List<InputCommand?> ParseInput(string inputString)
-        {   
+        {
             Console.WriteLine($"Parsing input: {inputString}");
 
             comboContext.ProcessInput(inputString);

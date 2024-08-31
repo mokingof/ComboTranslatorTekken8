@@ -1,4 +1,4 @@
-using ComboTranslatorTekken8.Model;
+using ComboTranslatorTekken8.Model.Utilities;
 
 namespace ComboTranslatorTekken8
 {

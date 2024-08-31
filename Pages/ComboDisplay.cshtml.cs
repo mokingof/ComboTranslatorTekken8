@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ComboTranslatorTekken8.Model;
 using System.Collections.Generic;
+using ComboTranslatorTekken8.Model.Parsing;
+using ComboTranslatorTekken8.Model.Utilities;
 
 namespace ComboTranslatorTekken8.Pages
 {
