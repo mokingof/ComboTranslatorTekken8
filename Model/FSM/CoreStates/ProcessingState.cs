@@ -21,8 +21,6 @@ namespace ComboTranslatorTekken8.Model.FSM.CoreStates
             //qcf qcb 
             //ssl ssr swl swr ssc
 
-         
-
             Context.Accumulator += input.ToString();
 
             if (QuarterCirclePattern.IsMatch(Context.Accumulator))

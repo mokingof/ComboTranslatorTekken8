@@ -10,16 +10,18 @@ namespace ComboTranslatorTekken8.Model.FSM.InputStates.DirectionStates
         public SingleDirectionState(ComboContext context) : base(context) { }
         public override void GenerateToken()
         {
-            if (char.IsUpper(Context.Accumulator.ElementAt(0)))
+            foreach (var character in Context.Accumulator)
             {
-                AddToken(new Token(TokenType.HoldSingleDirection, Context.Accumulator, Context.CurrentPosition));
+                if (char.IsUpper(character))
+                {
+                    AddToken(new Token(TokenType.HoldSingleDirection, character.ToString(), Context.CurrentPosition));
+                }
+                else
+                {
+                    AddToken(new Token(TokenType.SingleDirection, character.ToString(), Context.CurrentPosition));
+                }
             }
-            else
-            {
-                AddToken(new Token(TokenType.SingleDirection, Context.Accumulator, Context.CurrentPosition));
-            }
-            IsReadyForNextInput = false;
-            ResetAccumulator();
+           
         }
         public override IState HandleInput(char input)
         {
@@ -31,11 +33,13 @@ namespace ComboTranslatorTekken8.Model.FSM.InputStates.DirectionStates
             {
                 return new InitialState(Context);
             }
+            if (OnlyOnceCheck(Context.Accumulator))
+            {
+                GenerateToken();
+            }
 
+            string total = Context.Accumulator + input;
 
-            string first = Context.Accumulator;
-            string second = input.ToString();
-            string total = first + second;
             if (CombinedDirectionPattern.IsMatch(total))
             {
                 return new CombinedDirectionState(Context).HandleInput(input);
@@ -43,21 +47,37 @@ namespace ComboTranslatorTekken8.Model.FSM.InputStates.DirectionStates
             else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && char.IsDigit(input))
             {
                 GenerateToken();
+                IsReadyForNextInput = false;
+                ResetAccumulator();
                 return new SingleButtonState(Context).HandleInput(input);
             }
             else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && SingleDirectionPattern.IsMatch(input.ToString()))
             {
                 //  dbt bb! fbl! fc 
-                GenerateToken();
-                return new SingleDirectionState(Context).HandleInput(input);
+                //  GenerateToken();
+                Context.Accumulator += input.ToString();
+                return this;
             }
-            else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && !SingleDirectionPattern.IsMatch(input.ToString()))
+            else if (Context.Accumulator.Equals("f") && input.Equals('c'))
             {
+                //ClearPreviousTokens();
                 return new ProcessingState(Context).HandleInput(input);
 
             }
+          
             return new ErrorState(Context);
         }
+        private void ClearPreviousTokens()
+        {
+            // Remove the last n tokens where n is the length of the accumulator
+            int tokensToRemove = Context.Accumulator.Length;
+            Context.SharedTokens.RemoveRange(Context.SharedTokens.Count - tokensToRemove, tokensToRemove);
+            Context.CurrentPosition -= tokensToRemove;
+        }
+        public bool OnlyOnceCheck(string s)
+        {
+            return s.Length >= 2 && s.Length <= 3 && s.Distinct().Count() == 1;
+        } 
 
     }
 }
