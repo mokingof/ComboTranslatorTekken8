@@ -1,9 +1,9 @@
-﻿using ComboTranslatorTekken8.Model.FSM.ButtonStates;
+﻿using ComboTranslatorTekken8.Model.FSM.InputStates.ButtonStates;
 using ComboTranslatorTekken8.Model.FSM.Context;
-using ComboTranslatorTekken8.Model.FSM.DirectionStates;
+using ComboTranslatorTekken8.Model.FSM.InputStates.DirectionStates;
 using ComboTranslatorTekken8.Model.FSM.Interface;
 using ComboTranslatorTekken8.Model.FSM.MiscStates;
-using ComboTranslatorTekken8.Model.FSM.SpecialStates;
+using ComboTranslatorTekken8.Model.FSM.InputStates.SpecialDirectionStates;
 using ComboTranslatorTekken8.Model.FSM.CoreStates;
 
 namespace ComboTranslatorTekken8.Model.Parsing

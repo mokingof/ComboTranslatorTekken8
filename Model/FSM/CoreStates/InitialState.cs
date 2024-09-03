@@ -1,6 +1,6 @@
-﻿using ComboTranslatorTekken8.Model.FSM.ButtonStates;
+﻿using ComboTranslatorTekken8.Model.FSM.InputStates.ButtonStates;
 using ComboTranslatorTekken8.Model.FSM.Context;
-using ComboTranslatorTekken8.Model.FSM.DirectionStates;
+using ComboTranslatorTekken8.Model.FSM.InputStates.DirectionStates;
 using ComboTranslatorTekken8.Model.FSM.Interface;
 using System.Text.RegularExpressions;
 

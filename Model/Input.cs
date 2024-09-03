@@ -61,7 +61,7 @@ public enum InputCommand
     // Misc
     [InputString("h!"), InputString("H!")] Heat,
     [InputString("hs!"), InputString("HS!")] HeatSmash,
-    [InputString("hd!"), InputString("HD!")] HeadDash,
+    //[InputString("hd!"), InputString("HD!")] HeadDash,
     [InputString("hb!"), InputString("HB!")] HeatBurst,
     [InputString("t!"), InputString("T!")] Tornado,
     [InputString("jf"), InputString("JF")] JustFrame,

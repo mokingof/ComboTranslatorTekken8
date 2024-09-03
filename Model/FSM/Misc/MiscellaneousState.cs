@@ -12,12 +12,13 @@ namespace ComboTranslatorTekken8.Model.FSM.MiscStates
         public override void GenerateToken()
         {
             AddToken(new Token(TokenType.Miscellaneous, Context.Accumulator, Context.CurrentPosition));
+            ResetAccumulator();
         }
 
         public override IState HandleInput(char input)
         {
-       
-            return this;
+            GenerateToken();
+            return new InitialState(Context).HandleInput(input);
         }
 
 

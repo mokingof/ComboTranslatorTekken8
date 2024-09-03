@@ -1,8 +1,7 @@
 ﻿using ComboTranslatorTekken8.Model.FSM.Context;
-using ComboTranslatorTekken8.Model.FSM.DirectionStates;
 using ComboTranslatorTekken8.Model.FSM.Interface;
 using ComboTranslatorTekken8.Model.FSM.MiscStates;
-using ComboTranslatorTekken8.Model.FSM.SpecialStates;
+using ComboTranslatorTekken8.Model.FSM.InputStates.SpecialDirectionStates;
 
 namespace ComboTranslatorTekken8.Model.FSM.CoreStates
 {
@@ -21,8 +20,8 @@ namespace ComboTranslatorTekken8.Model.FSM.CoreStates
             //df db uf ub
             //qcf qcb 
             //ssl ssr swl swr ssc
-            //bb! b1
 
+         
 
             Context.Accumulator += input.ToString();
 
@@ -34,10 +33,19 @@ namespace ComboTranslatorTekken8.Model.FSM.CoreStates
             {
                 return new SideStepDirectionState(Context);
             }
-            else if (StageInteraction.IsMatch(Context.Accumulator))
+            else if (StageInteractionPattern.IsMatch(Context.Accumulator))
             {
                 return new StageInteractionState(Context);
             }
+            else if (StancePattern.IsMatch(Context.Accumulator))
+            {
+                return new StancesState(Context);
+            }
+            else if (MiscPattern.IsMatch(Context.Accumulator))
+            {
+                return  new MiscellaneousState(Context);    
+            }
+
 
 
             return this;

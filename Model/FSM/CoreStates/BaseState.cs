@@ -14,7 +14,10 @@ namespace ComboTranslatorTekken8.Model.FSM.CoreStates
         public static readonly Regex SingleDirectionPattern = new Regex(@"^[dfub]$", RegexOptions.IgnoreCase);
         public static readonly Regex QuarterCirclePattern = new Regex(@"^qc[fb]$", RegexOptions.IgnoreCase);
         public static readonly Regex SideStepPattern = new Regex(@"^ss[lr]|sw[lr]$", RegexOptions.IgnoreCase);
-        public static readonly Regex StageInteraction = new Regex(@"^(bb!|fbl!|wbl!|wbo!|wb!)$", RegexOptions.IgnoreCase);
+        public static readonly Regex StageInteractionPattern = new Regex(@"^(bb!|fbl!|wbl!|wbo!|wb!)$", RegexOptions.IgnoreCase);
+        public static readonly Regex MiscPattern = new Regex(@"^(h!|hs!|hd!|hb!|t!|jf|cc|fc|ch|dash|mc|wr|ws|~|,)$", RegexOptions.IgnoreCase);
+        public static readonly Regex StancePattern = new Regex(@"^(aop|bkp|bok|bt|cat|cd|cfo|ctf|dbt|dck|den|des|dew|dgf|dpd|dss|ext_dck|flea|flk|fly|gen|gmc|gmh|gs|hae|hbs|hms|hrm|hsp|hyp|iai|ind|isw|izu|jag|jgs|kin|knk|len|iff|lfs|lib|inh|mcr|med|mia|mnt|nss|nwg|pab|prf|rab|rai|rds|rff|rfs|rlx|roll|sbt|scr|sen|sit|sne|snk|stb|stc|swa|swa|swy|szn|trt|uns|vac|wlf|wra|zen)$", RegexOptions.IgnoreCase); 
+ 
 
         protected BaseState(ComboContext context)
         {

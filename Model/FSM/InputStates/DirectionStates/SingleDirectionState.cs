@@ -1,7 +1,7 @@
-﻿using ComboTranslatorTekken8.Model.FSM.ButtonStates;
-using ComboTranslatorTekken8.Model.FSM.Context;
+﻿using ComboTranslatorTekken8.Model.FSM.Context;
 using ComboTranslatorTekken8.Model.FSM.Interface;
 using ComboTranslatorTekken8.Model.FSM.CoreStates;
+using ComboTranslatorTekken8.Model.FSM.InputStates.ButtonStates;
 
 namespace ComboTranslatorTekken8.Model.FSM.InputStates.DirectionStates
 {
@@ -32,29 +32,29 @@ namespace ComboTranslatorTekken8.Model.FSM.InputStates.DirectionStates
                 return new InitialState(Context);
             }
 
-            if (IsReadyForNextInput)
+
+            string first = Context.Accumulator;
+            string second = input.ToString();
+            string total = first + second;
+            if (CombinedDirectionPattern.IsMatch(total))
             {
-                string first = Context.Accumulator;
-                string second = input.ToString();
-                string total = first + second;
-                if (CombinedDirectionPattern.IsMatch(total))
-                {
-                    return new CombinedDirectionState(Context).HandleInput(input);
-                }
-                else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && SingleDirectionPattern.IsMatch(input.ToString()))
-                {
-                    GenerateToken();
-                    return new SingleDirectionState(Context).HandleInput(input);
-                }
-                else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && char.IsDigit(input))
-                {
-                    GenerateToken();
-                    return new SingleButtonState(Context).HandleInput(input);
-                }
-                else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && !SingleDirectionPattern.IsMatch(input.ToString()))
-                {
-                    return new ProcessingState(Context).HandleInput(input);
-                }
+                return new CombinedDirectionState(Context).HandleInput(input);
+            }
+            else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && char.IsDigit(input))
+            {
+                GenerateToken();
+                return new SingleButtonState(Context).HandleInput(input);
+            }
+            else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && SingleDirectionPattern.IsMatch(input.ToString()))
+            {
+                //  dbt bb! fbl! fc 
+                GenerateToken();
+                return new SingleDirectionState(Context).HandleInput(input);
+            }
+            else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && !SingleDirectionPattern.IsMatch(input.ToString()))
+            {
+                return new ProcessingState(Context).HandleInput(input);
+
             }
             return new ErrorState(Context);
         }
