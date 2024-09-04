@@ -64,7 +64,7 @@ public enum InputCommand
     //[InputString("hd!"), InputString("HD!")] HeadDash,
     [InputString("hb!"), InputString("HB!")] HeatBurst,
     [InputString("t!"), InputString("T!")] Tornado,
-    [InputString("jf"), InputString("JF")] JustFrame,
+    [InputString(":"), InputString("jf")] JustFrame,
     [InputString("cc"), InputString("CC")] CrouchCancel,
     [InputString("fc"), InputString("FC")] FullCrouch,
     [InputString("ch"), InputString("CH")] CounterHit,

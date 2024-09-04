@@ -22,8 +22,8 @@ namespace ComboTranslatorTekken8.Model.Parsing
                 "QuarterCircle" => new QuarterCircleDirectionState(context),
                 "SideStep" => new SideStepDirectionState(context),
                 "Miscellaneous" => new MiscellaneousState(context),
-                "StageInteraction" => new StageInteractionState(context),
-                "Stance" => new StancesState(context),
+              /*  "StageInteraction" => new StageInteractionState(context),
+                "Stance" => new StancesState(context),*/
                 _ => new ErrorState(context),
             };
         }

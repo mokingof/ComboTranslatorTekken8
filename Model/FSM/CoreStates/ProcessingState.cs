@@ -31,14 +31,14 @@ namespace ComboTranslatorTekken8.Model.FSM.CoreStates
             {
                 return new SideStepDirectionState(Context);
             }
-            else if (StageInteractionPattern.IsMatch(Context.Accumulator))
+        /*    else if (StageInteractionPattern.IsMatch(Context.Accumulator))
             {
                 return new StageInteractionState(Context);
             }
             else if (StancePattern.IsMatch(Context.Accumulator))
             {
                 return new StancesState(Context);
-            }
+            }*/
             else if (MiscPattern.IsMatch(Context.Accumulator))
             {
                 return  new MiscellaneousState(Context);    

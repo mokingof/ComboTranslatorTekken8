@@ -33,11 +33,6 @@ namespace ComboTranslatorTekken8.Model.FSM.InputStates.DirectionStates
             {
                 return new InitialState(Context);
             }
-          /*  if (OnlyOnceCheck(Context.Accumulator))
-            {
-                GenerateToken();
-            }*/
-
             string total = Context.Accumulator + input;
 
             if (CombinedDirectionPattern.IsMatch(total))
@@ -59,27 +54,15 @@ namespace ComboTranslatorTekken8.Model.FSM.InputStates.DirectionStates
                 return this;
             }
             else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && !SingleDirectionPattern.IsMatch(input.ToString()))
-            {
+            {       // b t!
+                    // bt
                 GenerateToken();
                 IsReadyForNextInput = false;
                 ResetAccumulator();
                 return new ProcessingState(Context).HandleInput(input);
             }
-         /*   else if (Context.Accumulator.Equals("fb") && input.Equals('l'))
-            {
-                // Clear previous Is not needed here
-                // ClearPreviousTokens();
-                return new ProcessingState(Context).HandleInput(input);
+         
 
-            }*/
-            else  /*(Context.Accumulator.Equals("bb") && input.Equals('!'))*/
-            {
-                // Clear previous IS needed here
-              //  ClearPreviousTokens();
-                return new ProcessingState(Context).HandleInput(input);
-
-            }
-                 
             return new ErrorState(Context);
         }
         private void ClearPreviousTokens()
