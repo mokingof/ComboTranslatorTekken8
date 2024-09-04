@@ -21,7 +21,7 @@ namespace ComboTranslatorTekken8.Model.FSM.InputStates.DirectionStates
                     AddToken(new Token(TokenType.SingleDirection, character.ToString(), Context.CurrentPosition));
                 }
             }
-           
+
         }
         public override IState HandleInput(char input)
         {
@@ -33,10 +33,10 @@ namespace ComboTranslatorTekken8.Model.FSM.InputStates.DirectionStates
             {
                 return new InitialState(Context);
             }
-            if (OnlyOnceCheck(Context.Accumulator))
+          /*  if (OnlyOnceCheck(Context.Accumulator))
             {
                 GenerateToken();
-            }
+            }*/
 
             string total = Context.Accumulator + input;
 
@@ -53,18 +53,33 @@ namespace ComboTranslatorTekken8.Model.FSM.InputStates.DirectionStates
             }
             else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && SingleDirectionPattern.IsMatch(input.ToString()))
             {
-                //  dbt bb! fbl! fc 
+                //  dbt bb! fbl! 
                 //  GenerateToken();
                 Context.Accumulator += input.ToString();
                 return this;
             }
-            else if (Context.Accumulator.Equals("f") && input.Equals('c'))
+            else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && !SingleDirectionPattern.IsMatch(input.ToString()))
             {
-                //ClearPreviousTokens();
+                GenerateToken();
+                IsReadyForNextInput = false;
+                ResetAccumulator();
+                return new ProcessingState(Context).HandleInput(input);
+            }
+         /*   else if (Context.Accumulator.Equals("fb") && input.Equals('l'))
+            {
+                // Clear previous Is not needed here
+                // ClearPreviousTokens();
+                return new ProcessingState(Context).HandleInput(input);
+
+            }*/
+            else  /*(Context.Accumulator.Equals("bb") && input.Equals('!'))*/
+            {
+                // Clear previous IS needed here
+              //  ClearPreviousTokens();
                 return new ProcessingState(Context).HandleInput(input);
 
             }
-          
+                 
             return new ErrorState(Context);
         }
         private void ClearPreviousTokens()
@@ -77,7 +92,7 @@ namespace ComboTranslatorTekken8.Model.FSM.InputStates.DirectionStates
         public bool OnlyOnceCheck(string s)
         {
             return s.Length >= 2 && s.Length <= 3 && s.Distinct().Count() == 1;
-        } 
+        }
 
     }
 }

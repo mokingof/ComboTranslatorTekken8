@@ -8,11 +8,30 @@ namespace ComboTranslatorTekken8.Model.FSM.CoreStates
     {
         public InputAccumulationState(ComboContext context) : base(context) {}
 
-        public override void GenerateToken() {}
+        public override void GenerateToken() 
+        {
+            foreach (var character in Context.Accumulator)
+            {
+                if (char.IsUpper(character))
+                {
+                    AddToken(new Token(TokenType.HoldSingleDirection, character.ToString(), Context.CurrentPosition));
+                }
+                else
+                {
+                    AddToken(new Token(TokenType.SingleDirection, character.ToString(), Context.CurrentPosition));
+                }
+            }
+
+
+        }
 
         public override IState HandleInput(char input)
         {
-            Context.Accumulator += input.ToString();
+         /*   if (Context.Accumulator.Length == 3)
+            {
+                Context.Accumulator += input.ToString();
+            }
+            
 
             if (OnlyOnceCheck(Context.Accumulator) && !input.Equals('!'))
             {
@@ -22,10 +41,10 @@ namespace ComboTranslatorTekken8.Model.FSM.CoreStates
             {
            
                 return new ProcessingState(Context).HandleInput(input);
-            }
+            }*/
 
 
-            return new InitialState(Context);
+            return this;
         }
 
 
