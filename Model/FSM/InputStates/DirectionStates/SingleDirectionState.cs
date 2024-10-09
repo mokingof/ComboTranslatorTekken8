@@ -21,7 +21,7 @@ namespace ComboTranslatorTekken8.Model.FSM.InputStates.DirectionStates
                     AddToken(new Token(TokenType.SingleDirection, character.ToString(), Context.CurrentPosition));
                 }
             }
-
+          
         }
         public override IState HandleInput(char input)
         {
@@ -41,26 +41,26 @@ namespace ComboTranslatorTekken8.Model.FSM.InputStates.DirectionStates
             }
             else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && char.IsDigit(input))
             {
-                GenerateToken();
+                
                 IsReadyForNextInput = false;
                 ResetAccumulator();
                 return new SingleButtonState(Context).HandleInput(input);
             }
-            else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && SingleDirectionPattern.IsMatch(input.ToString()))
+            else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && Context.Accumulator.Equals(input.ToString()) && Context.Accumulator.Length <= 3)
             {
-                //  dbt bb! fbl! 
-                //  GenerateToken();
+
                 Context.Accumulator += input.ToString();
+                GenerateToken();
+                
                 return this;
             }
-            else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && !SingleDirectionPattern.IsMatch(input.ToString()))
-            {       // b t!
-                    // bt
+      /*      else if (SingleDirectionPattern.IsMatch(Context.Accumulator) && !SingleDirectionPattern.IsMatch(input.ToString()))
+            {     // NOT WORKING ---> dash fc fff
                 GenerateToken();
                 IsReadyForNextInput = false;
                 ResetAccumulator();
                 return new ProcessingState(Context).HandleInput(input);
-            }
+            }*/
          
 
             return new ErrorState(Context);

@@ -31,6 +31,10 @@ namespace ComboTranslatorTekken8.Model.FSM.Context
 
             foreach (char c in input)
             {
+                if (char.IsWhiteSpace(c))
+                {
+                    continue;
+                }
                 _initialState = _initialState.HandleInput(c);
             }
             FinalizeProcessing();

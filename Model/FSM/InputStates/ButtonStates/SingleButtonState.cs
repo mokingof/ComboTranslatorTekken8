@@ -33,7 +33,7 @@ namespace ComboTranslatorTekken8.Model.FSM.InputStates.ButtonStates
             {
                 return new CombinedButtonState(Context).HandleInput(input);
             }
-            if (char.IsLetter(input)|| char.IsPunctuation(input))
+            if (char.IsLetter(input)|| char.IsPunctuation(input) || char.IsSymbol(input))
             {
                 if (!IsEmptyString(Context.Accumulator))
                 {
